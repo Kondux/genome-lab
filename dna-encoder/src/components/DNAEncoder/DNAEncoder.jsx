@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, TextField, Slider, Typography, Switch } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, TextField, Slider, Typography, Switch, Button, IconButton } from '@mui/material';
+import { ContentCopy } from '@mui/icons-material';
 
 // Import the color palette
 import geneColorPalette from '../../data/gene_color_pallet.json';
@@ -164,9 +165,24 @@ function DNAEncoder() {
         return dnaString.toUpperCase();
     };
 
+    const handleCopyToClipboard = () => {
+        navigator.clipboard.writeText(encodeDNA()).then(() => {
+            // Handle successful copy
+            console.log("DNA copied to clipboard");
+        }, (error) => {
+            // Handle erroror
+            console.error("Failed to copy DNA to clipboard: ", error);
+        });
+    };
+    
     return (
         <div>
-            <Typography variant="h6">Encoded DNA: {encodeDNA()}</Typography>
+            <Typography variant="h6">
+                Encoded DNA: {encodeDNA()}
+                <IconButton onClick={handleCopyToClipboard} aria-label="copy">
+                    <ContentCopy />
+                </IconButton>
+            </Typography>
             <FormControl fullWidth margin="normal">
                 <InputLabel id="collection-type-label">Collection Type</InputLabel>
                 <Select
