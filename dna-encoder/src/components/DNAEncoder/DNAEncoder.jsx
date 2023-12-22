@@ -141,7 +141,7 @@ function DNAEncoder() {
         dnaString += encodeInt(stakingBoost, 1); // Encoding staking boost
 
         // TODO: Make this dynamic based on collection type
-        dnaString +=  (collectionType === "avatar") ? "01" : "02"; // Encoding collection type
+        dnaString +=  (collectionType === "avatar") ? "02" : "01"; // Encoding collection type
         Object.entries(dnaKey.genes).slice(3).forEach(([gene, length]) => {
             const value = inputValues[gene];
 
