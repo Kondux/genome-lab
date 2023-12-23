@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
-import geneColorPalette from '../data/gene_color_pallet.json';
-import dnaKeyKey from '../data/DNA_key_key.json';
+import geneColorPalette from '../../data/gene_color_pallet.json';
+import dnaKeyKey from '../../data/DNA_key_key.json';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -68,7 +68,7 @@ function DNADecoder() {
 		// Determine the correct DNA key
 		const collectionType = dnaKeyKey['v1'][collectionGene];
 		if (collectionType) {
-			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
+			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					// Proceed with decoding using the loaded DNA key
 					const decodedResults = decodeDNA(key.default);
@@ -79,11 +79,6 @@ function DNADecoder() {
 				);
 		}
 	};
-
-	//     // Decode the DNA string
-	//     const decodedResults = decodeDNA();
-	//     setDecodedData(JSON.stringify(decodedResults, null, 2));
-	// };
 
 	const handleDnaStringChange = (event) => {
 		setDnaString(event.target.value);

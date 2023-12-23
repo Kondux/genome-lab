@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AppBar, Tabs, Tab, Box } from '@mui/material';
 
 import DNAEncoder from './components/DNAEncoder/DNAEncoder';
-import DNADecoder from './components/DNADecoder';
+import DNADecoder from './components/DNADecoder/DNADecoder';
 
 function App() {
 	const [tabValue, setTabValue] = useState(0);
