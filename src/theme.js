@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
 
 const konduxColors = {
 	'accent-blue': '#2DE4C1',
@@ -9,46 +8,73 @@ const konduxColors = {
 	'gradient-red': '#EC5046',
 };
 
-// https://mui.com/material-ui/customization/typography/
-const typography = {
-	fontFamily: [
-		'Poppins',
-		'Rubik',
-		'-apple-system',
-		'BlinkMacSystemFont',
-		"'Segoe UI'",
-		'Roboto',
-		"'Helvetica Neue'",
-		'Arial',
-		'sans-serif',
-	].join(', '),
-};
-
-// https://mui.com/material-ui/customization/palette/
-const palette = {
-	mode: 'dark',
-	primary: {
-		main: konduxColors['accent-blue'],
-	},
-};
-
-// TODO: Figure out a way to add autocompletion here
-const globalStyles = {
-    '@global': {
-        '@root':{
-            alignItems: 'center',
-            textAlign: 'center',
-        } 
-    }
-};
-
 // https://mui.com/material-ui/customization/theming/
 const theme = createTheme({
-	palette: palette,
-	typography: typography,
+	// https://mui.com/material-ui/customization/palette/
+	palette: {
+		mode: 'dark',
+		primary: {
+			main: konduxColors['accent-blue'],
+		},
+	},
+	// https://mui.com/material-ui/customization/typography/
+	typography: {
+		fontFamily: [
+			'Poppins',
+			'Rubik',
+			'-apple-system',
+			'BlinkMacSystemFont',
+			"'Segoe UI'",
+			'Roboto',
+			"'Helvetica Neue'",
+			'Arial',
+			'sans-serif',
+		].join(', '),
+	},
+	// https://mui.com/material-ui/customization/theme-components/
 	components: {
+		// Global Styles
 		MuiCssBaseline: {
-			styleOverrides: globalStyles,
+			styleOverrides: {
+				html: {
+					height: '100%',
+					textAlign: 'center',
+				},
+				body: {
+					height: '100%',
+					backgroundImage: `linear-gradient(${konduxColors['gradient-pink']}, ${konduxColors['gradient-violet']})`,
+					backgroundRepeat: 'no-repeat',
+					backgroundAttachment: 'fixed',
+				},
+			},
+		},
+		// Component Styles
+		MuiAppBar: {
+			styleOverrides: {
+				root: {
+					backgroundColor: konduxColors['gradient-violet'],
+				},
+			},
+		},
+		MuiTabs: {
+			styleOverrides: {
+				flexContainer: {
+					display: 'flex',
+					flexDirection: 'row',
+					justifyContent: 'space-evenly',
+				},
+
+				indicator: {
+					backgroundColor: konduxColors['gradient-pink'],
+				},
+			},
+		},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					backgroundColor: konduxColors['accent-orange'],
+				},
+			},
 		},
 	},
 });

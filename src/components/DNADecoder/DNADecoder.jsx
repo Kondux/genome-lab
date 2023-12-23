@@ -86,7 +86,7 @@ function DNADecoder() {
 
 	return (
 		<div>
-			<Typography variant='h6'>Decode DNA String</Typography>
+			{/* <Typography variant='h6'>Decode DNA String</Typography> */}
 			<TextField
 				fullWidth
 				label='DNA String'

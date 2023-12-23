@@ -57,7 +57,7 @@ function DNAEncoder() {
 		// Skip the first three genes (protocol version, NFT boost, collection type)
 		const genesArray = Object.entries(dnaKey.genes).slice(3);
 
-		return genesArray.map(([gene, length]) => {
+		return genesArray.map(([gene, _]) => {
 			if (gene.endsWith('_id')) {
 				const optionsKey = `${gene}s`;
 				const options = dnaKey[optionsKey];
