@@ -8,7 +8,6 @@ import {
 	Slider,
 	Typography,
 	Switch,
-	Button,
 	IconButton,
 } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';

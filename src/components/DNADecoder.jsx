@@ -1,5 +1,5 @@
 // DNADecoder.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../data/gene_color_pallet.json';
