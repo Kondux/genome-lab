@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/genome-lab/static/css/main.0d5ed86d.css",
-    "main.js": "/genome-lab/static/js/main.20bfb6bc.js",
+    "main.js": "/genome-lab/static/js/main.c3e01f13.js",
     "static/js/969.4b51a067.chunk.js": "/genome-lab/static/js/969.4b51a067.chunk.js",
     "static/js/935.4f47325c.chunk.js": "/genome-lab/static/js/935.4f47325c.chunk.js",
+    "static/js/266.a547c2b6.chunk.js": "/genome-lab/static/js/266.a547c2b6.chunk.js",
     "index.html": "/genome-lab/index.html",
-    "main.20bfb6bc.js.map": "/genome-lab/static/js/main.20bfb6bc.js.map"
+    "main.c3e01f13.js.map": "/genome-lab/static/js/main.c3e01f13.js.map"
   },
   "entrypoints": [
     "static/css/main.0d5ed86d.css",
-    "static/js/main.20bfb6bc.js"
+    "static/js/main.c3e01f13.js"
   ]
 }
