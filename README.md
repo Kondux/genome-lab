@@ -12,7 +12,7 @@
 [![Kondux Info page](https://img.shields.io/badge/Kondux-News-blue.svg)](https://www.kondux.info)
 </div>
 
-Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by [Kondux](https://www.kondux.io), where we are forging the future of digital genetics. Dive into an ecosystem where your creativity meets our technology, enabling you to encode and decode the very building blocks of digital life - kNFTs (Kondux Non-Fungible Tokens).
+Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by [Kondux](https://www.kondux.io), where we are forging the future of digital genetics. Dive into an ecosystem where your creativity meets our technology, enabling you to encode and decode the very building blocks of digital life - the DNA of kNFTs (Kondux Non-Fungible Tokens).
 
 ## Explore Digital Genetics
 
