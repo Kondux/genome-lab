@@ -17,12 +17,12 @@ Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by [Kondux](https:/
 ## Explore Digital Genetics
 
 - **Encode DNA**: Utilize our Data-Driven Encryption to represent your asset as complex DNA strands.
-- **Decode DNA**: Unravel the strands to reveal the assets they represent.
+- **Decode DNA**: Unravel the strands to reveal the secrets they represent.
 - **kNFTs**: Discover the potential of dynamic Non-Fungible Tokens.
 
 ## Our Vision
 
-At Kondux, we are committed to shaping a future where technology enriches every interaction. Our vision with Genome Lab is to provide an ever-lasting way of decoding and encoding information with the Kondux DNA protocal that outlives our developers.
+At Kondux, we are committed to shaping a future where technology enriches every interaction. Our vision with The Genome Lab is to provide an ever-lasting way of decoding and encoding information with the Kondux DNA protocol that outlives our developers. In addition to being a permanent addition to the Kondux space, this DNA encoder/decoder also stands as a P.o.C. for data-driven software based on our DNA key encoding protocol. The encoder, decoder, and surrounding site can support *virtually any* DNA protocol with a DNA key.
 
 ## Join the Community
 
