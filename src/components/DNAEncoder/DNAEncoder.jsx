@@ -197,9 +197,15 @@ function DNAEncoder() {
 		<div>
 			<Typography variant='h6'>
 				{encodeDNA()}
-				<IconButton onClick={handleCopyToClipboard} aria-label='copy'>
-					<ContentCopy />
-				</IconButton>
+				{collectionType ? (
+					<IconButton
+						onClick={handleCopyToClipboard}
+						aria-label='copy'
+						style={{ height: '100%' }}
+					>
+						<ContentCopy />
+					</IconButton>
+				) : null}
 			</Typography>
 			<FormControl fullWidth margin='normal'>
 				<InputLabel id='collection-type-label'>
@@ -217,13 +223,19 @@ function DNAEncoder() {
 				</Select>
 			</FormControl>
 
-			<Typography gutterBottom>Staking Boost: {stakingBoost}%</Typography>
-			<Slider
-				value={stakingBoost}
-				onChange={(e, val) => setStakingBoost(val)}
-				min={0}
-				max={100}
-			/>
+			{collectionType ? (
+				<>
+					<Typography gutterBottom>
+						Staking Boost: {stakingBoost}%
+					</Typography>
+					<Slider
+						value={stakingBoost}
+						onChange={(e, val) => setStakingBoost(val)}
+						min={0}
+						max={100}
+					/>
+				</>
+			) : null}
 
 			{renderInputFields()}
 		</div>
