@@ -75,7 +75,9 @@ function DNAEncoder() {
 				const options = dnaKey[optionsKey];
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{snakeCaseToTitleCase(gene)}</InputLabel>
+						<InputLabel id={`${gene}-label`}>
+							{snakeCaseToTitleCase(gene)}
+						</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
@@ -108,7 +110,9 @@ function DNAEncoder() {
 			} else if (gene.endsWith('_color')) {
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{snakeCaseToTitleCase(gene)}</InputLabel>
+						<InputLabel id={`${gene}-label`}>
+							{snakeCaseToTitleCase(gene)}
+						</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
 							value={snakeCaseToTitleCase(inputValues[gene])}
