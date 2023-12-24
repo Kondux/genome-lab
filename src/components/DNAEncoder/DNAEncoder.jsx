@@ -50,6 +50,19 @@ function DNAEncoder() {
 		setInputValues((prev) => ({ ...prev, [gene]: value }));
 	};
 
+	const replaceSpecialCharacters = (str) => {
+		return str
+			.replace(/[_-]/g, ' ')
+			.replace(/([a-zA-Z])(\d|[A-Z])/g, '$1 $2');
+	};
+
+	const snakeCaseToTitleCase = (str) => {
+		return str
+			.split('_')
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+	};
+
 	const renderInputFields = () => {
 		if (!dnaKey) return null;
 
@@ -62,7 +75,7 @@ function DNAEncoder() {
 				const options = dnaKey[optionsKey];
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{gene}</InputLabel>
+						<InputLabel id={`${gene}-label`}>{snakeCaseToTitleCase(gene)}</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
@@ -72,7 +85,7 @@ function DNAEncoder() {
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
-									{name}
+									{replaceSpecialCharacters(name)}
 								</MenuItem>
 							))}
 						</Select>
@@ -82,7 +95,7 @@ function DNAEncoder() {
 				return (
 					<TextField
 						key={gene}
-						label={gene}
+						label={snakeCaseToTitleCase(gene)}
 						type='number'
 						value={inputValues[gene]}
 						onChange={(e) =>
@@ -95,10 +108,10 @@ function DNAEncoder() {
 			} else if (gene.endsWith('_color')) {
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{gene}</InputLabel>
+						<InputLabel id={`${gene}-label`}>{snakeCaseToTitleCase(gene)}</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
-							value={inputValues[gene]}
+							value={snakeCaseToTitleCase(inputValues[gene])}
 							onChange={(e) =>
 								handleInputChange(gene, e.target.value)
 							}
@@ -106,7 +119,7 @@ function DNAEncoder() {
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
 									<MenuItem key={key} value={key}>
-										{name}
+										{replaceSpecialCharacters(name)}
 									</MenuItem>
 								),
 							)}
@@ -116,7 +129,7 @@ function DNAEncoder() {
 			} else if (gene.endsWith('_bool')) {
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<Typography>{gene}</Typography>
+						<Typography>{snakeCaseToTitleCase(gene)}</Typography>
 						<Switch
 							checked={inputValues[gene] === '01'}
 							onChange={(e) =>
@@ -134,7 +147,7 @@ function DNAEncoder() {
 			return (
 				<TextField
 					key={gene}
-					label={gene}
+					label={snakeCaseToTitleCase(gene)}
 					value={inputValues[gene]}
 					onChange={(e) => handleInputChange(gene, e.target.value)}
 					fullWidth
