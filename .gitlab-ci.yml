@@ -1,0 +1,11 @@
+image: node:20
+
+stage:
+ - build
+
+build:
+  stage: build
+  script:
+    - npm run deploy
+  only:
+    - main
