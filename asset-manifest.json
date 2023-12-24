@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/kNFT-DNA-Encoder/static/css/main.e6c13ad2.css",
-    "main.js": "/kNFT-DNA-Encoder/static/js/main.e4305587.js",
+    "main.css": "/kNFT-DNA-Encoder/static/css/main.0d5ed86d.css",
+    "main.js": "/kNFT-DNA-Encoder/static/js/main.af37ded2.js",
     "static/js/969.4b51a067.chunk.js": "/kNFT-DNA-Encoder/static/js/969.4b51a067.chunk.js",
     "static/js/935.4f47325c.chunk.js": "/kNFT-DNA-Encoder/static/js/935.4f47325c.chunk.js",
     "index.html": "/kNFT-DNA-Encoder/index.html",
-    "main.e6c13ad2.css.map": "/kNFT-DNA-Encoder/static/css/main.e6c13ad2.css.map",
-    "main.e4305587.js.map": "/kNFT-DNA-Encoder/static/js/main.e4305587.js.map"
+    "main.af37ded2.js.map": "/kNFT-DNA-Encoder/static/js/main.af37ded2.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.e4305587.js"
+    "static/css/main.0d5ed86d.css",
+    "static/js/main.af37ded2.js"
   ]
 }
