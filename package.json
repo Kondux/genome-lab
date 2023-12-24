@@ -15,7 +15,7 @@
 		"react-scripts": "5.0.1",
 		"web-vitals": "^2.1.4"
 	},
-	"homepage": "https://kondux.github.io/kNFT-DNA-Encoder",
+	"homepage": "https://kondux.github.io/genome-lab",
 	"scripts": {
 		"format": "prettier --write .",
 		"predeploy": "npm run build",
@@ -45,6 +45,7 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@babel/plugin-transform-private-property-in-object": "^7.23.4",
 		"gh-pages": "^6.1.0",
 		"prettier": "^3.1.1"
 	}

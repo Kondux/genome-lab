@@ -16,7 +16,6 @@ import { ContentCopy } from '@mui/icons-material';
 import geneColorPalette from '../../data/gene_color_pallet.json';
 
 // Encoder functions
-
 const encodeInt = (value, byteSize) => {
 	return parseInt(value)
 		.toString(16)
@@ -197,7 +196,7 @@ function DNAEncoder() {
 	return (
 		<div>
 			<Typography variant='h6'>
-				Encoded DNA: {encodeDNA()}
+				{encodeDNA()}
 				<IconButton onClick={handleCopyToClipboard} aria-label='copy'>
 					<ContentCopy />
 				</IconButton>
