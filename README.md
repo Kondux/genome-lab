@@ -1,91 +1,39 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+<h1>🧬Genome Lab by Kondux🧬</h1>
+  
+![GitHub stars](https://img.shields.io/github/stars/Kondux/genome-lab?style=social)&nbsp;&nbsp;&nbsp;
+![GitHub forks](https://img.shields.io/github/forks/Kondux/genome-lab?style=social)&nbsp;&nbsp;&nbsp;
+![GitHub issues](https://img.shields.io/github/issues/Kondux/genome-lab)&nbsp;&nbsp;&nbsp;
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+<br><br>
+[![Discord](https://img.shields.io/badge/Discord-join%20chat-blue.svg)](https://discord.gg/kondux)&nbsp;&nbsp;&nbsp;
+[![Twitter Follow](https://img.shields.io/twitter/follow/kondux.svg?style=social&label=Follow)](https://twitter.com/kondux)&nbsp;&nbsp;&nbsp;
+[![Kondux News](https://img.shields.io/badge/Kondux-News-blue.svg)](https://www.kondux.io/news)
+</div>
 
-## Available Scripts
+Welcome to Genome Lab, a cutting-edge initiative by [Kondux](https://www.kondux.io), where we are forging the future of digital genetics. Dive into an ecosystem where your creativity meets our technology, enabling you to encode and decode the very building blocks of digital life - kNFTs (Kondux Non-Fungible Tokens).
 
-In the project directory, you can run:
+## Explore Digital Genetics
 
-### `npm start`
+- **Encode DNA**: Turn your digital assets into complex DNA strands.
+- **Decode DNA**: Unravel the strands to reveal the assets they represent.
+- **kNFTs**: Discover the potential of dynamic Non-Fungible Tokens.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Our Vision
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+At Kondux, we are committed to shaping a future where technology enriches every interaction. Our vision with Genome Lab is to provide a secure, engaging, and innovative platform that stands at the forefront of the digital revolution.
 
-### `npm test`
+## Join the Community
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+We believe in the collective power of innovation. Join us on our journey to redefine the landscape of digital assets. Connect, contribute, and stay up-to-date with the latest developments in Genome Lab.
 
-### `npm run build`
+## Acknowledgments
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best
-performance.
+A special acknowledgment to our partners and collaborators who make this journey not just possible, but also remarkable:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- NVIDIA Inception Program for their invaluable support and resources.
+- The vibrant community of developers, creators, and visionaries who continue to inspire us.
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+For more about our projects, visit [Kondux](https://www.kondux.io).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
-
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn't feel obligated to use this
-feature. However we understand that this tool wouldn't be useful if you couldn't
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
