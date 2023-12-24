@@ -6,10 +6,9 @@
 ![GitHub forks](https://img.shields.io/github/forks/Kondux/genome-lab?style=social)&nbsp;&nbsp;&nbsp;
 ![GitHub issues](https://img.shields.io/github/issues/Kondux/genome-lab)&nbsp;&nbsp;&nbsp;
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
-<br>
-
-[![Discord](https://img.shields.io/badge/Discord-join%20chat-blue.svg)](https://discord.gg/kondux)
-[![Twitter Follow](https://img.shields.io/twitter/follow/kondux.svg?style=social&label=Follow)](https://twitter.com/kondux)
+<br><br>
+[![Discord](https://img.shields.io/badge/Discord-join%20chat-blue.svg)](https://discord.gg/kondux)&nbsp;&nbsp;&nbsp;
+[![Twitter Follow](https://img.shields.io/twitter/follow/kondux.svg?style=social&label=Follow)](https://twitter.com/kondux)&nbsp;&nbsp;&nbsp;
 [![Kondux News](https://img.shields.io/badge/Kondux-News-blue.svg)](https://www.kondux.io/news)
 </div>
 
