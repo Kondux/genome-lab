@@ -212,6 +212,7 @@ function DNAEncoder() {
 					label='Collection Type'
 					onChange={(e) => setCollectionType(e.target.value)}
 				>
+					{/* TODO: Make this data-driven */}
 					<MenuItem value='avatar'>Avatar</MenuItem>
 					<MenuItem value='persona'>Persona</MenuItem>
 				</Select>
