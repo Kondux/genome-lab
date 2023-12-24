@@ -200,7 +200,7 @@ function DNAEncoder() {
 
 	return (
 		<div>
-			<Typography variant='h6'>
+			<Typography variant='h5'>
 				{encodeDNA()}
 				{collectionType ? (
 					<IconButton
