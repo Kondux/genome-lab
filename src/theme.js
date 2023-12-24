@@ -39,6 +39,7 @@ const theme = createTheme({
 				html: {
 					height: '100%',
 					textAlign: 'center',
+					fontSize: '25px',
 				},
 				body: {
 					height: '100%',
@@ -78,11 +79,11 @@ const theme = createTheme({
 		},
 		MuiFormControl: {
 			styleOverrides: {
-					root: {
-						textAlign: 'left',
-					},
+				root: {
+					textAlign: 'left',
 				},
-		}
+			},
+		},
 	},
 });
 

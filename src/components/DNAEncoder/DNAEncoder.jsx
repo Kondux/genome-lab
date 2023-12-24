@@ -11,6 +11,7 @@ import {
 	IconButton,
 } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
+import { snakeCaseToTitleCase, replaceSpecialCharacters } from '../util';
 
 // Import the color palette
 import geneColorPalette from '../../data/gene_color_pallet.json';
@@ -62,7 +63,9 @@ function DNAEncoder() {
 				const options = dnaKey[optionsKey];
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{gene}</InputLabel>
+						<InputLabel id={`${gene}-label`}>
+							{snakeCaseToTitleCase(gene)}
+						</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
@@ -72,7 +75,7 @@ function DNAEncoder() {
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
-									{name}
+									{replaceSpecialCharacters(name)}
 								</MenuItem>
 							))}
 						</Select>
@@ -82,7 +85,7 @@ function DNAEncoder() {
 				return (
 					<TextField
 						key={gene}
-						label={gene}
+						label={snakeCaseToTitleCase(gene)}
 						type='number'
 						value={inputValues[gene]}
 						onChange={(e) =>
@@ -95,10 +98,12 @@ function DNAEncoder() {
 			} else if (gene.endsWith('_color')) {
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<InputLabel id={`${gene}-label`}>{gene}</InputLabel>
+						<InputLabel id={`${gene}-label`}>
+							{snakeCaseToTitleCase(gene)}
+						</InputLabel>
 						<Select
 							labelId={`${gene}-label`}
-							value={inputValues[gene]}
+							value={snakeCaseToTitleCase(inputValues[gene])}
 							onChange={(e) =>
 								handleInputChange(gene, e.target.value)
 							}
@@ -106,7 +111,7 @@ function DNAEncoder() {
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
 									<MenuItem key={key} value={key}>
-										{name}
+										{replaceSpecialCharacters(name)}
 									</MenuItem>
 								),
 							)}
@@ -116,7 +121,7 @@ function DNAEncoder() {
 			} else if (gene.endsWith('_bool')) {
 				return (
 					<FormControl key={gene} fullWidth margin='normal'>
-						<Typography>{gene}</Typography>
+						<Typography>{snakeCaseToTitleCase(gene)}</Typography>
 						<Switch
 							checked={inputValues[gene] === '01'}
 							onChange={(e) =>
@@ -134,7 +139,7 @@ function DNAEncoder() {
 			return (
 				<TextField
 					key={gene}
-					label={gene}
+					label={snakeCaseToTitleCase(gene)}
 					value={inputValues[gene]}
 					onChange={(e) => handleInputChange(gene, e.target.value)}
 					fullWidth
@@ -197,9 +202,15 @@ function DNAEncoder() {
 		<div>
 			<Typography variant='h6'>
 				{encodeDNA()}
-				<IconButton onClick={handleCopyToClipboard} aria-label='copy'>
-					<ContentCopy />
-				</IconButton>
+				{collectionType ? (
+					<IconButton
+						onClick={handleCopyToClipboard}
+						aria-label='copy'
+						style={{ height: '100%' }}
+					>
+						<ContentCopy />
+					</IconButton>
+				) : null}
 			</Typography>
 			<FormControl fullWidth margin='normal'>
 				<InputLabel id='collection-type-label'>
@@ -217,13 +228,19 @@ function DNAEncoder() {
 				</Select>
 			</FormControl>
 
-			<Typography gutterBottom>Staking Boost: {stakingBoost}%</Typography>
-			<Slider
-				value={stakingBoost}
-				onChange={(e, val) => setStakingBoost(val)}
-				min={0}
-				max={100}
-			/>
+			{collectionType ? (
+				<>
+					<Typography gutterBottom>
+						Staking Boost: {stakingBoost}%
+					</Typography>
+					<Slider
+						value={stakingBoost}
+						onChange={(e, val) => setStakingBoost(val)}
+						min={0}
+						max={100}
+					/>
+				</>
+			) : null}
 
 			{renderInputFields()}
 		</div>

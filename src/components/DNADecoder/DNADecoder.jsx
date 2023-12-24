@@ -4,6 +4,7 @@ import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../../data/gene_color_pallet.json';
 import dnaKeyKey from '../../data/DNA_key_key.json';
+import { snakeCaseToTitleCase, replaceSpecialCharacters } from '../util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -72,7 +73,7 @@ function DNADecoder() {
 				.then((key) => {
 					// Proceed with decoding using the loaded DNA key
 					const decodedResults = decodeDNA(key.default);
-					setDecodedData(JSON.stringify(decodedResults, null, 2));
+					setDecodedData(decodedResults);
 				})
 				.catch((error) =>
 					console.error('Error loading DNA key file:', error),
@@ -82,6 +83,12 @@ function DNADecoder() {
 
 	const handleDnaStringChange = (event) => {
 		setDnaString(event.target.value);
+	};
+
+	const renderDecodedData = (str) => {
+		const arr = snakeCaseToTitleCase(str).split(' ');
+		arr.pop();
+		return arr.join(' ');
 	};
 
 	return (
@@ -98,8 +105,20 @@ function DNADecoder() {
 				Decode DNA
 			</Button>
 			{decodedData && (
-				<Typography variant='body1' style={{ marginTop: '20px' }}>
-					Decoded Data: <pre>{decodedData}</pre>
+				<Typography
+					variant='h4'
+					style={{ marginTop: '20px', fontSize: '1.75rem' }}
+				>
+					<div>
+						{Object.keys(decodedData).map((key) => (
+							<div key={key}>
+								<strong>{renderDecodedData(key)}: </strong>{' '}
+								{replaceSpecialCharacters(
+									decodedData[key].toString(),
+								)}
+							</div>
+						))}
+					</div>
 				</Typography>
 			)}
 		</div>
