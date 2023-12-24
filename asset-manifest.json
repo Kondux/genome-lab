@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/kNFT-DNA-Encoder/static/css/main.0d5ed86d.css",
-    "main.js": "/kNFT-DNA-Encoder/static/js/main.af37ded2.js",
-    "static/js/969.4b51a067.chunk.js": "/kNFT-DNA-Encoder/static/js/969.4b51a067.chunk.js",
-    "static/js/935.4f47325c.chunk.js": "/kNFT-DNA-Encoder/static/js/935.4f47325c.chunk.js",
-    "index.html": "/kNFT-DNA-Encoder/index.html",
-    "main.af37ded2.js.map": "/kNFT-DNA-Encoder/static/js/main.af37ded2.js.map"
+    "main.css": "/genome-lab/static/css/main.0d5ed86d.css",
+    "main.js": "/genome-lab/static/js/main.9fb856c1.js",
+    "static/js/969.4b51a067.chunk.js": "/genome-lab/static/js/969.4b51a067.chunk.js",
+    "static/js/935.4f47325c.chunk.js": "/genome-lab/static/js/935.4f47325c.chunk.js",
+    "index.html": "/genome-lab/index.html",
+    "main.9fb856c1.js.map": "/genome-lab/static/js/main.9fb856c1.js.map"
   },
   "entrypoints": [
     "static/css/main.0d5ed86d.css",
-    "static/js/main.af37ded2.js"
+    "static/js/main.9fb856c1.js"
   ]
 }
