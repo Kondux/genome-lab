@@ -39,7 +39,6 @@ const theme = createTheme({
 				html: {
 					height: '100%',
 					textAlign: 'center',
-					fontSize: '25px',
 				},
 				body: {
 					height: '100%',
