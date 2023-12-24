@@ -65,7 +65,7 @@ const theme = createTheme({
 				},
 
 				indicator: {
-					backgroundColor: konduxColors['gradient-pink'],
+					backgroundColor: 'white',
 				},
 			},
 		},
