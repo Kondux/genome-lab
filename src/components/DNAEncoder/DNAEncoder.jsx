@@ -11,6 +11,7 @@ import {
 	IconButton,
 } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
+import { snakeCaseToTitleCase, replaceSpecialCharacters } from '../util';
 
 // Import the color palette
 import geneColorPalette from '../../data/gene_color_pallet.json';
@@ -48,19 +49,6 @@ function DNAEncoder() {
 
 	const handleInputChange = (gene, value) => {
 		setInputValues((prev) => ({ ...prev, [gene]: value }));
-	};
-
-	const replaceSpecialCharacters = (str) => {
-		return str
-			.replace(/[_-]/g, ' ')
-			.replace(/([a-zA-Z])(\d|[A-Z])/g, '$1 $2');
-	};
-
-	const snakeCaseToTitleCase = (str) => {
-		return str
-			.split('_')
-			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-			.join(' ');
 	};
 
 	const renderInputFields = () => {
