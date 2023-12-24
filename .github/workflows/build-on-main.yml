@@ -18,14 +18,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - run: |
-          git config --global user.email "clarsen908@gmail.com"
-          git config --global user.name "Lynloo"
-      - run: npm install
-      - run: npm run deploy
+      - uses: actions/pages-build-deployment@v1
       
 
