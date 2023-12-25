@@ -1,4 +1,3 @@
-
 <div align="center">
 <h1>🧬Genome Lab by Kondux🧬</h1>
   
@@ -12,20 +11,30 @@
 [![Kondux Info page](https://img.shields.io/badge/Kondux-News-blue.svg)](https://www.kondux.info)
 </div>
 
-Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by [Kondux](https://www.kondux.io), where we are forging the future of digital genetics. Dive into an ecosystem where your creativity meets our technology, enabling you to encode and decode the very building blocks of digital life - kNFTs (Kondux Non-Fungible Tokens).
+Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by
+[Kondux](https://www.kondux.io), where we are forging the future of digital
+genetics. Dive into an ecosystem where your creativity meets our technology,
+enabling you to encode and decode the very building blocks of digital life -
+kNFTs (Kondux Non-Fungible Tokens).
 
 ## Explore Digital Genetics
 
-- **Encode DNA**: Utilize our Data-Driven Encryption to represent your asset as complex DNA strands.
-- **Decode DNA**: Unravel the strands to reveal the assets they represent.
-- **kNFTs**: Discover the potential of dynamic Non-Fungible Tokens.
+-   **Encode DNA**: Utilize our Data-Driven Encryption to represent your asset
+    as complex DNA strands.
+-   **Decode DNA**: Unravel the strands to reveal the assets they represent.
+-   **kNFTs**: Discover the potential of dynamic Non-Fungible Tokens.
 
 ## Our Vision
 
-At Kondux, we are committed to shaping a future where technology enriches every interaction. Our vision with Genome Lab is to provide an ever-lasting way of decoding and encoding information with the Kondux DNA protocal that outlives our developers.
+At Kondux, we are committed to shaping a future where technology enriches every
+interaction. Our vision with Genome Lab is to provide an ever-lasting way of
+decoding and encoding information with the Kondux DNA protocal that outlives our
+developers.
 
 ## Join the Community
 
-We believe in the collective power of innovation. Join us on our journey to redefine the landscape of digital assets. Connect, contribute, and stay up-to-date with the latest developments in Kondux.
+We believe in the collective power of innovation. Join us on our journey to
+redefine the landscape of digital assets. Connect, contribute, and stay
+up-to-date with the latest developments in Kondux.
 
 For more about our projects, visit [Kondux](https://www.kondux.io).
