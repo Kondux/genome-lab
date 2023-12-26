@@ -34,17 +34,21 @@ function DNAEncoder() {
 	const [collectionType, setCollectionType] = useState('');
 	const [dnaKey, setDnaKey] = useState(null);
 	const [inputValues, setInputValues] = useState({});
+	const [errorValues, setErrorValues] = useState({});
 
 	useEffect(() => {
 		if (collectionType) {
 			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					setDnaKey(key.default);
-					const initialValues = {};
+					const initialInputValues = {};
+					const initialErrorValues = {};
 					Object.keys(key.default.genes).forEach((gene) => {
-						initialValues[gene] = '';
+						initialInputValues[gene] = '';
+						initialErrorValues[gene] = false;
 					});
-					setInputValues(initialValues);
+					setInputValues(initialInputValues);
+					setErrorValues(initialErrorValues);
 				})
 				.catch((error) =>
 					console.error('Error loading DNA key file:', error),
@@ -52,7 +56,16 @@ function DNAEncoder() {
 		}
 	}, [collectionType]);
 
-	const handleInputChange = (gene, value) => {
+	const handleInputChange = (e, gene) => {
+		const value = e.target.value;
+		const num_bytes = dnaKey.genes[gene];
+		const minimum = 0;
+		const maximum = Math.pow(2, num_bytes * 8) - 1;
+
+		setErrorValues((prevErrors) => ({
+			...prevErrors,
+			[gene]: value < minimum || value > maximum,
+		}));
 		setInputValues((prev) => ({ ...prev, [gene]: value }));
 	};
 
@@ -74,9 +87,7 @@ function DNAEncoder() {
 						<Select
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
-							onChange={(e) =>
-								handleInputChange(gene, e.target.value)
-							}
+							onChange={(e) => handleInputChange(e, gene)}
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
@@ -95,11 +106,10 @@ function DNAEncoder() {
 						label={snakeCaseToTitleCase(gene)}
 						type='number'
 						value={inputValues[gene]}
-						onChange={(e) =>
-							handleInputChange(gene, e.target.value)
-						}
+						onChange={(e) => handleInputChange(e, gene)}
 						fullWidth
 						margin='normal'
+						error={errorValues[gene]}
 					/>
 				);
 			} else if (gene.endsWith('_color')) {
@@ -111,9 +121,7 @@ function DNAEncoder() {
 						<Select
 							labelId={`${gene}-label`}
 							value={snakeCaseToTitleCase(inputValues[gene])}
-							onChange={(e) =>
-								handleInputChange(gene, e.target.value)
-							}
+							onChange={(e) => handleInputChange(e, gene)}
 						>
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
@@ -154,7 +162,7 @@ function DNAEncoder() {
 					key={gene}
 					label={snakeCaseToTitleCase(gene)}
 					value={inputValues[gene]}
-					onChange={(e) => handleInputChange(gene, e.target.value)}
+					onChange={(e) => handleInputChange(e, gene)}
 					fullWidth
 					margin='normal'
 				/>
