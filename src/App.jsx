@@ -24,7 +24,7 @@ function App() {
 					<Tab label='Decode DNA' />
 				</Tabs>
 			</AppBar>
-			<Box p={3}>
+			<Box id='content-main' p={3}>
 				{tabValue === 0 && <DNAEncoder />}
 				{tabValue === 1 && <DNADecoder />}
 			</Box>
