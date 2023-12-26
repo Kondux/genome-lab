@@ -11,7 +11,12 @@ import {
 	IconButton,
 } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
-import { snakeCaseToTitleCase, replaceSpecialCharacters } from '../util';
+import {
+	snakeCaseToTitleCase,
+	replaceDashesAndUnderscores,
+	camelCaseToTitleCase,
+	addSpaceBeforeNumbers,
+} from '../util';
 
 // Import the color palette
 import geneColorPalette from '../../data/gene_color_pallet.json';
@@ -75,7 +80,9 @@ function DNAEncoder() {
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
-									{replaceSpecialCharacters(name)}
+									{addSpaceBeforeNumbers(
+										replaceDashesAndUnderscores(name),
+									)}
 								</MenuItem>
 							))}
 						</Select>
@@ -111,7 +118,13 @@ function DNAEncoder() {
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
 									<MenuItem key={key} value={key}>
-										{replaceSpecialCharacters(name)}
+										{addSpaceBeforeNumbers(
+											camelCaseToTitleCase(
+												replaceDashesAndUnderscores(
+													name,
+												),
+											),
+										)}
 									</MenuItem>
 								),
 							)}

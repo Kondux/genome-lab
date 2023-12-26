@@ -4,7 +4,7 @@ import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../../data/gene_color_pallet.json';
 import dnaKeyKey from '../../data/DNA_key_key.json';
-import { snakeCaseToTitleCase, replaceSpecialCharacters } from '../util';
+import { snakeCaseToTitleCase, replaceDashesAndUnderscores } from '../util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -93,7 +93,6 @@ function DNADecoder() {
 
 	return (
 		<div>
-			{/* <Typography variant='h6'>Decode DNA String</Typography> */}
 			<TextField
 				fullWidth
 				label='DNA String'
@@ -107,13 +106,19 @@ function DNADecoder() {
 			{decodedData && (
 				<Typography
 					variant='h4'
-					style={{ marginTop: '20px', fontSize: '1.75rem' }}
+					id='decoded-data'
+					style={{
+						marginTop: '20px',
+						fontSize: '1.75rem',
+						lineHeight: '1.7',
+						color: '#f5f4ff',
+					}}
 				>
 					<div>
 						{Object.keys(decodedData).map((key) => (
 							<div key={key}>
 								<strong>{renderDecodedData(key)}: </strong>{' '}
-								{replaceSpecialCharacters(
+								{replaceDashesAndUnderscores(
 									decodedData[key].toString(),
 								)}
 							</div>
