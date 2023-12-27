@@ -8,7 +8,7 @@
 		"persona_type_id": 1,
 		"species_id": 1,
 		"clan_id": 1,
-		"year_int": 2
+		"birth_year_int": 2
 	},
 	"collection_ids": {
 		"Persona": "01"
