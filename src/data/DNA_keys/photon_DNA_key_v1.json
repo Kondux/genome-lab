@@ -6,14 +6,14 @@
 		"collection_id": 1,
 		"mint_number_int": 2,
 		"active_photon_bool": 1,
-		"kNFT1_token_int": 3,
-        "kNFT2_token_int": 3,
-        "kNFT3_token_int": 3,
-        "kNFT4_token_int": 3,
-        "kNFT5_token_int": 3,
-        "kNFT6_token_int": 3,
-        "kNFT7_token_int": 3,
-        "kNFT8_token_int": 3
+		"kNFT1_token_id_tkn": 3,
+        "kNFT2_token_id_tkn": 3,
+        "kNFT3_token_id_tkn": 3,
+        "kNFT4_token_id_tkn": 3,
+        "kNFT5_token_id_tkn": 3,
+        "kNFT6_token_id_tkn": 3,
+        "kNFT7_token_id_tkn": 3,
+        "kNFT8_token_id_tkn": 3
 	},
     "collection_ids": {
 		"Persona": "01",
