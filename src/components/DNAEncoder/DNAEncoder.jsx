@@ -57,7 +57,13 @@ function DNAEncoder() {
 	}, [collectionType]);
 
 	const handleInputChange = (e, gene) => {
-		const value = e.target.value;
+		let value;
+		if (gene.endsWith('_bool')) {
+			value = e.target.checked ? '01' : '00';
+		} else {
+			value = e.target.value;
+		}
+
 		const num_bytes = dnaKey.genes[gene];
 		const minimum = 0;
 		const maximum = Math.pow(2, num_bytes * 8) - 1;
@@ -145,12 +151,7 @@ function DNAEncoder() {
 						<Typography>{snakeCaseToTitleCase(gene)}</Typography>
 						<Switch
 							checked={inputValues[gene] === '01'}
-							onChange={(e) =>
-								handleInputChange(
-									gene,
-									e.target.checked ? '01' : '00',
-								)
-							}
+							onChange={(e) => handleInputChange(e, gene)}
 						/>
 					</FormControl>
 				);
