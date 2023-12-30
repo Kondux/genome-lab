@@ -94,6 +94,7 @@ function DNAEncoder() {
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
 							onChange={(e) => handleInputChange(e, gene)}
+							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
@@ -128,6 +129,7 @@ function DNAEncoder() {
 							labelId={`${gene}-label`}
 							value={snakeCaseToTitleCase(inputValues[gene])}
 							onChange={(e) => handleInputChange(e, gene)}
+							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
