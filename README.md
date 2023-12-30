@@ -11,7 +11,6 @@
 [![Kondux Info page](https://img.shields.io/badge/Kondux-News-blue.svg)](https://www.kondux.info)
 </div>
 
-
 Welcome to [Genome Lab](https://kondux.github.io/genome-lab) by
 [Kondux](https://www.kondux.io), where we are forging the future of digital
 genetics. Dive into an ecosystem where your creativity meets our technology,
@@ -29,7 +28,7 @@ kNFTs (Kondux Non-Fungible Tokens).
 
 At Kondux, we are committed to shaping a future where technology enriches every
 interaction. Our vision with Genome Lab is to provide an ever-lasting way of
-decoding and encoding information with the Kondux DNA protocal that outlives our
+decoding and encoding information with the Kondux DNA protocol that outlives our
 developers.
 
 ## Join the Community
@@ -38,4 +37,11 @@ We believe in the collective power of innovation. Join us on our journey to
 redefine the landscape of digital assets. Connect, contribute, and stay
 up-to-date with the latest developments in Kondux.
 
-For more about our projects, visit [Kondux](https://www.kondux.io).
+For more about our projects, visit [Kondux](https://www.kondux.info).
+
+## BETA BREAKDOWN
+
+This is currently a living site and will receive many CI/CD updates as time goes on. 
+While there are a lot of small or stylistic to-dos, some bigger to-dos include:
+- Utilizing the DNA reference key to make the very start of the pipeline data driven to match the rest
+- Adding color outputs to demonstrate the color and/or hex codes of the color
