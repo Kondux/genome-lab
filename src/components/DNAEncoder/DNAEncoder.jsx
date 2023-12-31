@@ -198,10 +198,11 @@ function DNAEncoder() {
 		dnaString += encodeInt(protocolVersion, 1); // Fixed protocol version
 		dnaString += encodeInt(stakingBoost, 1); // Encoding staking boost
 
-		// TODO: Make this dynamic based on collection type
 		dnaString += Object.keys(collectionTypes).find(
 			(key) => collectionTypes[key] === collectionType,
-		); // Encoding collection type
+		); 
+		
+		// Encoding collection type
 		Object.entries(dnaKey.genes)
 			.slice(3)
 			.forEach(([gene, length]) => {
