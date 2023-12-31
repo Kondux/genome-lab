@@ -57,21 +57,34 @@ function DNAEncoder() {
 	}, [collectionType]);
 
 	const handleInputChange = (e, gene) => {
+		// Specialized input parsing
+		let temp = gene.split('_');
+		let geneType = temp[temp.length - 1];
+		console.log(geneType);
 		let value;
-		if (gene.endsWith('_bool')) {
+		if (geneType === 'bool') {
 			value = e.target.checked ? '01' : '00';
 		} else {
 			value = e.target.value;
 		}
 
-		const num_bytes = dnaKey.genes[gene];
-		const minimum = 0;
-		const maximum = Math.pow(2, num_bytes * 8) - 1;
+		// Specialized error checking
+		let isError = false;
+		if (geneType === 'int') {
+			const numBytes = dnaKey.genes[gene];
+			const minimum = 0;
+			const maximum = Math.pow(2, numBytes * 8) - 1;
 
-		setErrorValues((prevErrors) => ({
-			...prevErrors,
-			[gene]: value < minimum || value > maximum,
-		}));
+			const parsedValue = parseInt(value, 10);
+			const isNonEmpty = value !== '';
+			const isValidInteger =
+				!isNaN(parsedValue) && parsedValue.toString() === value;
+			const isInRange = parsedValue >= minimum && parsedValue <= maximum;
+
+			isError = isNonEmpty && (!isValidInteger || !isInRange);
+		}
+
+		setErrorValues((prev) => ({ ...prev, [gene]: isError }));
 		setInputValues((prev) => ({ ...prev, [gene]: value }));
 	};
 
@@ -94,6 +107,7 @@ function DNAEncoder() {
 							labelId={`${gene}-label`}
 							value={inputValues[gene]}
 							onChange={(e) => handleInputChange(e, gene)}
+							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(options).map(([name, value]) => (
 								<MenuItem key={value} value={value}>
@@ -110,7 +124,7 @@ function DNAEncoder() {
 					<TextField
 						key={gene}
 						label={snakeCaseToTitleCase(gene)}
-						type='number'
+						type='text'
 						value={inputValues[gene]}
 						onChange={(e) => handleInputChange(e, gene)}
 						fullWidth
@@ -128,6 +142,7 @@ function DNAEncoder() {
 							labelId={`${gene}-label`}
 							value={snakeCaseToTitleCase(inputValues[gene])}
 							onChange={(e) => handleInputChange(e, gene)}
+							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(geneColorPalette).map(
 								([key, { name }]) => (
