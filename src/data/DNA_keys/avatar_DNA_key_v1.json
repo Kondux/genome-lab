@@ -12,7 +12,8 @@
 		"eye_id": 1,
 		"eye_Right_color": 1,
 		"eye_Left_color": 1,
-		"eye_glow_bool": 1
+		"eye_glow_bool": 1,
+		"new_gene_int": 3
 	},
 	"collection_ids": {
 		"Persona": "01",

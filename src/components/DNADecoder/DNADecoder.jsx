@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../../data/gene_color_pallet.json';
-import dnaKeyKey from '../../data/DNA_key_key.json';
+import protocolVersions from '../../data/protocol_versions.json';
 import { snakeCaseToTitleCase, replaceDashesAndUnderscores } from '../util';
 
 function DNADecoder() {
@@ -67,7 +67,7 @@ function DNADecoder() {
 		const collectionGene = dnaString.slice(4, 6);
 
 		// Determine the correct DNA key
-		const collectionType = dnaKeyKey['v1'][collectionGene];
+		const collectionType = protocolVersions['v1'][collectionGene];
 		if (collectionType) {
 			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {

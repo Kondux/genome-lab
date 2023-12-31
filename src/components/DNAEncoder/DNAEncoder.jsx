@@ -16,6 +16,7 @@ import {
 	replaceDashesAndUnderscores,
 	camelCaseToTitleCase,
 	addSpaceBeforeNumbers,
+	toTitleCase,
 } from '../util';
 
 // Import the color palette
@@ -29,14 +30,19 @@ const encodeInt = (value, byteSize) => {
 };
 
 function DNAEncoder() {
-	const [protocolVersion] = useState('01'); // Fixed protocol version
+	const [protocolVersion] = useState(1); // Fixed protocol version
 	const [stakingBoost, setStakingBoost] = useState(0); // NFT boost determined by slider
 	const [collectionType, setCollectionType] = useState('');
+	const [collectionTypes, setCollectionTypes] = useState({});
 	const [dnaKey, setDnaKey] = useState(null);
 	const [inputValues, setInputValues] = useState({});
 	const [errorValues, setErrorValues] = useState({});
 
 	useEffect(() => {
+		if (protocolVersion)
+			import('../../data/protocol_versions.json').then((data) => {
+				setCollectionTypes(data[`v${protocolVersion}`]);
+			});
 		if (collectionType) {
 			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
@@ -45,7 +51,7 @@ function DNAEncoder() {
 					const initialErrorValues = {};
 					Object.keys(key.default.genes).forEach((gene) => {
 						initialInputValues[gene] = '';
-						initialErrorValues[gene] = false;
+						initialErrorValues[gene] = false; 
 					});
 					setInputValues(initialInputValues);
 					setErrorValues(initialErrorValues);
@@ -54,13 +60,12 @@ function DNAEncoder() {
 					console.error('Error loading DNA key file:', error),
 				);
 		}
-	}, [collectionType]);
+	}, [protocolVersion, collectionType]);
 
 	const handleInputChange = (e, gene) => {
 		// Specialized input parsing
 		let temp = gene.split('_');
 		let geneType = temp[temp.length - 1];
-		console.log(geneType);
 		let value;
 		if (geneType === 'bool') {
 			value = e.target.checked ? '01' : '00';
@@ -189,11 +194,14 @@ function DNAEncoder() {
 	const encodeDNA = () => {
 		if (!dnaKey) return '';
 
-		let dnaString = protocolVersion; // Fixed protocol version
+		let dnaString = '';
+		dnaString += encodeInt(protocolVersion, 1); // Fixed protocol version
 		dnaString += encodeInt(stakingBoost, 1); // Encoding staking boost
 
 		// TODO: Make this dynamic based on collection type
-		dnaString += collectionType === 'avatar' ? '02' : '01'; // Encoding collection type
+		dnaString += Object.keys(collectionTypes).find(
+			(key) => collectionTypes[key] === collectionType,
+		); // Encoding collection type
 		Object.entries(dnaKey.genes)
 			.slice(3)
 			.forEach(([gene, length]) => {
@@ -215,6 +223,9 @@ function DNAEncoder() {
 					dnaString += value;
 				} else if (gene.endsWith('_int')) {
 					dnaString += encodeInt(value, length);
+				}
+				else {
+					dnaString += encodeInt(value, length)
 				}
 				// TODO: Add more conditions for other gene types
 			});
@@ -259,9 +270,15 @@ function DNAEncoder() {
 					label='Collection Type'
 					onChange={(e) => setCollectionType(e.target.value)}
 				>
-					{/* TODO: Make this data-driven */}
-					<MenuItem value='avatar'>Avatar</MenuItem>
-					<MenuItem value='persona'>Persona</MenuItem>
+					{Object.values(collectionTypes)
+						.reverse()
+						.map((type) => {
+							return (
+								<MenuItem key={type} value={type}>
+									{toTitleCase(type)}
+								</MenuItem>
+							);
+						})}
 				</Select>
 			</FormControl>
 
