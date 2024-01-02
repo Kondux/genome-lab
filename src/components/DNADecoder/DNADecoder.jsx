@@ -4,7 +4,12 @@ import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../../data/gene_color_pallet.json';
 import protocolVersions from '../../data/protocol_versions.json';
-import { snakeCaseToTitleCase, replaceDashesAndUnderscores } from '../util';
+import {
+	replaceDashesAndUnderscores,
+	addSpaceBeforeNumbers,
+	camelCaseToTitleCase,
+	snakeCaseToTitleCase,
+} from '../util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -118,9 +123,19 @@ function DNADecoder() {
 						{Object.keys(decodedData).map((key) => (
 							<div key={key}>
 								<strong>{renderDecodedData(key)}: </strong>{' '}
-								{replaceDashesAndUnderscores(
-									decodedData[key].toString(),
-								)}
+								{key.endsWith('_color')
+									? addSpaceBeforeNumbers(
+											camelCaseToTitleCase(
+												decodedData[key].toString(),
+											),
+										)
+									: snakeCaseToTitleCase(
+											addSpaceBeforeNumbers(
+												replaceDashesAndUnderscores(
+													decodedData[key].toString(),
+												),
+											),
+										)}
 							</div>
 						))}
 					</div>
