@@ -51,7 +51,7 @@ function DNAEncoder() {
 					const initialErrorValues = {};
 					Object.keys(key.default.genes).forEach((gene) => {
 						initialInputValues[gene] = '';
-						initialErrorValues[gene] = false; 
+						initialErrorValues[gene] = false;
 					});
 					setInputValues(initialInputValues);
 					setErrorValues(initialErrorValues);
@@ -175,19 +175,18 @@ function DNAEncoder() {
 						/>
 					</FormControl>
 				);
+			} else {
+				return (
+					<TextField
+						key={gene}
+						label={snakeCaseToTitleCase(gene)}
+						value={inputValues[gene]}
+						onChange={(e) => handleInputChange(e, gene)}
+						fullWidth
+						margin='normal'
+					/>
+				);
 			}
-			// TODO: Add more conditions for other gene types
-
-			return (
-				<TextField
-					key={gene}
-					label={snakeCaseToTitleCase(gene)}
-					value={inputValues[gene]}
-					onChange={(e) => handleInputChange(e, gene)}
-					fullWidth
-					margin='normal'
-				/>
-			);
 		});
 	};
 
@@ -200,8 +199,8 @@ function DNAEncoder() {
 
 		dnaString += Object.keys(collectionTypes).find(
 			(key) => collectionTypes[key] === collectionType,
-		); 
-		
+		);
+
 		// Encoding collection type
 		Object.entries(dnaKey.genes)
 			.slice(3)
@@ -224,11 +223,9 @@ function DNAEncoder() {
 					dnaString += value;
 				} else if (gene.endsWith('_int')) {
 					dnaString += encodeInt(value, length);
+				} else {
+					dnaString += encodeInt(value, length);
 				}
-				else {
-					dnaString += encodeInt(value, length)
-				}
-				// TODO: Add more conditions for other gene types
 			});
 
 		return dnaString.toUpperCase();
