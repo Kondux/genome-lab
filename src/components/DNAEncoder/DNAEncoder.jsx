@@ -90,7 +90,14 @@ function DNAEncoder() {
 		}
 
 		setErrorValues((prev) => ({ ...prev, [gene]: isError }));
-		setInputValues((prev) => ({ ...prev, [gene]: value }));
+		if (!isError) {
+			setInputValues((prev) => ({ ...prev, [gene]: value }));
+		} else {
+			setTimeout(
+				() => setErrorValues((prev) => ({ ...prev, [gene]: !isError })),
+				500,
+			);
+		}
 	};
 
 	const renderInputFields = () => {
