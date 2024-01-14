@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
 import geneColorPalette from '../../data/gene_color_pallet.json';
-import dnaKeyKey from '../../data/DNA_key_key.json';
-import { snakeCaseToTitleCase, replaceDashesAndUnderscores } from '../util';
+import protocolVersions from '../../data/protocol_versions.json';
+import {
+	replaceDashesAndUnderscores,
+	addSpaceBeforeNumbers,
+	camelCaseToTitleCase,
+	snakeCaseToTitleCase,
+} from '../util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -67,7 +72,7 @@ function DNADecoder() {
 		const collectionGene = dnaString.slice(4, 6);
 
 		// Determine the correct DNA key
-		const collectionType = dnaKeyKey['v1'][collectionGene];
+		const collectionType = protocolVersions['v1'][collectionGene];
 		if (collectionType) {
 			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
@@ -118,9 +123,19 @@ function DNADecoder() {
 						{Object.keys(decodedData).map((key) => (
 							<div key={key}>
 								<strong>{renderDecodedData(key)}: </strong>{' '}
-								{replaceDashesAndUnderscores(
-									decodedData[key].toString(),
-								)}
+								{key.endsWith('_color')
+									? addSpaceBeforeNumbers(
+											camelCaseToTitleCase(
+												decodedData[key].toString(),
+											),
+										)
+									: snakeCaseToTitleCase(
+											addSpaceBeforeNumbers(
+												replaceDashesAndUnderscores(
+													decodedData[key].toString(),
+												),
+											),
+										)}
 							</div>
 						))}
 					</div>

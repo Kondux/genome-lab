@@ -19,3 +19,9 @@ export const snakeCaseToTitleCase = (text) => {
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(' ');
 };
+
+export const toTitleCase = (text) => {
+	return text.replace(/\w\S*/g, function (match) {
+		return match.charAt(0).toUpperCase() + match.substr(1).toLowerCase();
+	});
+};
