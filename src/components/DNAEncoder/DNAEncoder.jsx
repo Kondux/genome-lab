@@ -157,8 +157,14 @@ function DNAEncoder() {
 							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(geneColorPalette).map(
-								([key, { name }]) => (
-									<MenuItem key={key} value={key}>
+								([key, { name, hex }]) => (
+									<MenuItem
+										key={key}
+										value={key}
+										style={{
+											justifyContent: 'space-between',
+										}}
+									>
 										{addSpaceBeforeNumbers(
 											camelCaseToTitleCase(
 												replaceDashesAndUnderscores(
@@ -166,6 +172,15 @@ function DNAEncoder() {
 												),
 											),
 										)}
+										<div
+											style={{
+												backgroundColor: hex,
+												border: '2px white solid',
+												aspectRatio: '1',
+												height: '1.4rem',
+												borderRadius: '50%',
+											}}
+										></div>
 									</MenuItem>
 								),
 							)}
