@@ -47,6 +47,7 @@ function DNADecoder() {
 			} else if (gene.endsWith('_color')) {
 				decodedResults[gene] = decodeColor(geneValue);
 			}
+			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
 		});
 
@@ -61,7 +62,7 @@ function DNADecoder() {
 
 	const decodeColor = (value) => {
 		const color = geneColorPalette[value];
-		return color ? color.name : 'Unknown';
+		return color || 'Unknown';
 	};
 
 	const handleSubmit = () => {

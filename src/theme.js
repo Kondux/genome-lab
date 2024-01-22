@@ -118,11 +118,11 @@ const theme = createTheme({
 		MuiSelect: {
 			styleOverrides: {
 				root: {
-					verticalAlign: 'middle',
+					// verticalAlign: 'middle',
 				},
 				select: {
 					display: 'flex',
-					justifyContent: 'space-between',
+					gap: '0.5rem',
 				},
 			},
 		},
