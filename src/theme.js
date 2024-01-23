@@ -16,7 +16,7 @@ const konduxColors = {
 /** @type {Partial<ThemeOptions['breakpoints']>} */
 const breakpoints = {
 	values: {
-		mobile: 600,
+		mobile:700 ,
 		desktop: 1200,
 	},
 };
