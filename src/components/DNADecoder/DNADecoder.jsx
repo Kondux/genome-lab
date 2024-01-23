@@ -65,6 +65,12 @@ function DNADecoder() {
 		return color || 'Unknown';
 	};
 
+	const isValidDNA = (key) => {
+		// Test if the DNA string is a number or hex value
+		if (key === undefined) return false;
+		return !isNaN(parseInt(key, 16));
+	}
+
 	const handleSubmit = () => {
 		// Set the DNA key
 		if (!dnaString) return;
@@ -100,7 +106,6 @@ function DNADecoder() {
 	const renderDNAMapping = (key) => {
 		// Check thats it is a string and defined
 		if (typeof key !== 'string' && key !== undefined) {
-			console.log('triggered')
 			return 'Unknown';
 		}
 
@@ -122,8 +127,7 @@ function DNADecoder() {
 						}}
 					/>
 					{
-						/^[0-9]+$/.test(decodedData[key]) ?
-
+						isValidDNA(decodedData[key]) ?
 							addSpaceBeforeNumbers(
 								camelCaseToTitleCase(
 									decodedData[key].name,
@@ -133,7 +137,7 @@ function DNADecoder() {
 				</div>
 				:
 
-				/^[0-9]+$/.test(decodedData[key]) ?
+				isValidDNA(decodedData[key]) ?
 
 					snakeCaseToTitleCase(
 						addSpaceBeforeNumbers(
