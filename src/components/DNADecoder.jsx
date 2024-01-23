@@ -9,7 +9,7 @@ import {
 	addSpaceBeforeNumbers,
 	camelCaseToTitleCase,
 	snakeCaseToTitleCase,
-} from './util';
+} from '../util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -69,7 +69,7 @@ function DNADecoder() {
 		// Test if the DNA string is a number or hex value
 		if (key === undefined) return false;
 		return !isNaN(parseInt(key, 16));
-	}
+	};
 
 	const handleSubmit = () => {
 		// Set the DNA key
@@ -109,36 +109,37 @@ function DNADecoder() {
 			return 'Unknown';
 		}
 
-
-		return <div id="decoder-results" key={key} style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }} >
-			<strong>{renderDecodedData(key)}: </strong>{' '}
-			{key.endsWith('_color')
-				?
-				<div style={{ display: 'flex', justifyContent: 'center' }}>
-					<div
-						style={{
-							backgroundColor: decodedData[key].hex,
-							border: '2px white solid',
-							aspectRatio: '1',
-							height: '1.5rem',
-							borderRadius: '50%',
-							marginRight: '0.5rem',
-							marginTop: '0.7rem'
-						}}
-					/>
-					{
-						isValidDNA(decodedData[key]) ?
-							addSpaceBeforeNumbers(
-								camelCaseToTitleCase(
-									decodedData[key].name,
-								),
-							) : "Unknown"
-					}
-				</div>
-				:
-
-				isValidDNA(decodedData[key]) ?
-
+		return (
+			<div
+				id='decoder-results'
+				key={key}
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					gap: '1rem',
+				}}
+			>
+				<strong>{renderDecodedData(key)}: </strong>{' '}
+				{key.endsWith('_color') ? (
+					<div style={{ display: 'flex', justifyContent: 'center' }}>
+						<div
+							style={{
+								backgroundColor: decodedData[key].hex,
+								border: '2px white solid',
+								aspectRatio: '1',
+								height: '1.5rem',
+								borderRadius: '50%',
+								marginRight: '0.5rem',
+								marginTop: '0.7rem',
+							}}
+						/>
+						{isValidDNA(decodedData[key])
+							? addSpaceBeforeNumbers(
+									camelCaseToTitleCase(decodedData[key].name),
+								)
+							: 'Unknown'}
+					</div>
+				) : isValidDNA(decodedData[key]) ? (
 					snakeCaseToTitleCase(
 						addSpaceBeforeNumbers(
 							replaceDashesAndUnderscores(
@@ -146,10 +147,12 @@ function DNADecoder() {
 							),
 						),
 					)
-					: "Unknown"
-			}
-		</div>
-	}
+				) : (
+					'Unknown'
+				)}
+			</div>
+		);
+	};
 
 	return (
 		<div>
@@ -175,9 +178,9 @@ function DNADecoder() {
 					}}
 				>
 					<div>
-						{Object.keys(decodedData).map((key) => (
-							renderDNAMapping(key)
-						))}
+						{Object.keys(decodedData).map((key) =>
+							renderDNAMapping(key),
+						)}
 					</div>
 				</Typography>
 			)}

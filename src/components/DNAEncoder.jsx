@@ -158,20 +158,17 @@ function DNAEncoder() {
 						>
 							{Object.entries(geneColorPalette).map(
 								([key, { name, hex }]) => (
-									<MenuItem
-									key={key}
-									value={key}
-									>
-									<div
-										style={{
-											backgroundColor: hex,
-											border: '2px white solid',
-											aspectRatio: '1',
-											height: '1rem',
-											borderRadius: '50%',
-											marginRight: '0.5rem',
-										}}
-									/>
+									<MenuItem key={key} value={key}>
+										<div
+											style={{
+												backgroundColor: hex,
+												border: '2px white solid',
+												aspectRatio: '1',
+												height: '1rem',
+												borderRadius: '50%',
+												marginRight: '0.5rem',
+											}}
+										/>
 										{addSpaceBeforeNumbers(
 											camelCaseToTitleCase(
 												replaceDashesAndUnderscores(
