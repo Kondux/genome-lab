@@ -16,7 +16,7 @@ const konduxColors = {
 /** @type {Partial<ThemeOptions['breakpoints']>} */
 const breakpoints = {
 	values: {
-		mobile:700 ,
+		mobile: 700,
 		desktop: 1200,
 	},
 };
@@ -66,6 +66,10 @@ const theme = createTheme({
 				},
 
 				[`@media (min-width:${breakpoints.values.mobile}px)`]: {
+					'#decoder-results': {
+						fontsize: '1rem',
+					},
+
 					'#content-main': {
 						paddingLeft: '20%',
 						paddingRight: '20%',

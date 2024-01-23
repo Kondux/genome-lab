@@ -98,14 +98,14 @@ function DNADecoder() {
 	};
 
 	const renderDNAMapping = (key) => {
-		console.log(key);
-		console.log(typeof key);
+		// Check thats it is a string and defined
 		if (typeof key !== 'string' && key !== undefined) {
 			console.log('triggered')
 			return 'Unknown';
 		}
 
-		return <div key={key} style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }} >
+
+		return <div id="decoder-results" key={key} style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }} >
 			<strong>{renderDecodedData(key)}: </strong>{' '}
 			{key.endsWith('_color')
 				?
@@ -122,21 +122,28 @@ function DNADecoder() {
 						}}
 					/>
 					{
+						/^[0-9]+$/.test(decodedData[key]) ?
 
-						addSpaceBeforeNumbers(
-							camelCaseToTitleCase(
-								decodedData[key].name,
-							),
-						)
+							addSpaceBeforeNumbers(
+								camelCaseToTitleCase(
+									decodedData[key].name,
+								),
+							) : "Unknown"
 					}
 				</div>
-				: snakeCaseToTitleCase(
-					addSpaceBeforeNumbers(
-						replaceDashesAndUnderscores(
-							decodedData[key].toString(),
+				:
+
+				/^[0-9]+$/.test(decodedData[key]) ?
+
+					snakeCaseToTitleCase(
+						addSpaceBeforeNumbers(
+							replaceDashesAndUnderscores(
+								decodedData[key].toString(),
+							),
 						),
-					),
-				)}
+					)
+					: "Unknown"
+			}
 		</div>
 	}
 
