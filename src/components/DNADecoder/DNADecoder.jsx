@@ -97,6 +97,49 @@ function DNADecoder() {
 		return arr.join(' ');
 	};
 
+	const renderDNAMapping = (key) => {
+		console.log(key);
+		console.log(typeof key);
+		if (typeof key !== 'string' && key !== undefined) {
+			console.log('triggered')
+			return 'Unknown';
+		}
+
+		return <div key={key} style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }} >
+			<strong>{renderDecodedData(key)}: </strong>{' '}
+			{key.endsWith('_color')
+				?
+				<div style={{ display: 'flex', justifyContent: 'center' }}>
+					<div
+						style={{
+							backgroundColor: decodedData[key].hex,
+							border: '2px white solid',
+							aspectRatio: '1',
+							height: '1.5rem',
+							borderRadius: '50%',
+							marginRight: '0.5rem',
+							marginTop: '0.7rem'
+						}}
+					/>
+					{
+
+						addSpaceBeforeNumbers(
+							camelCaseToTitleCase(
+								decodedData[key].name,
+							),
+						)
+					}
+				</div>
+				: snakeCaseToTitleCase(
+					addSpaceBeforeNumbers(
+						replaceDashesAndUnderscores(
+							decodedData[key].toString(),
+						),
+					),
+				)}
+		</div>
+	}
+
 	return (
 		<div>
 			<TextField
@@ -122,39 +165,7 @@ function DNADecoder() {
 				>
 					<div>
 						{Object.keys(decodedData).map((key) => (
-							<div key={key} style={{display: 'flex', justifyContent: 'center', gap: '1rem'}} >
-								<strong>{renderDecodedData(key)}: </strong>{' '}
-								{key.endsWith('_color')
-									?
-									<div style={{display: 'flex', justifyContent: 'center'}}>
-										<div
-											style={{
-												backgroundColor: decodedData[key].hex,
-												border: '2px white solid',
-												aspectRatio: '1',
-												height: '1.5rem',
-												borderRadius: '50%',
-												marginRight: '0.5rem',
-												marginTop: '0.7rem'
-											}}
-										/>
-										{
-
-											addSpaceBeforeNumbers(
-												camelCaseToTitleCase(
-													decodedData[key].name,
-												),
-											)
-										}
-									</div>
-									: snakeCaseToTitleCase(
-										addSpaceBeforeNumbers(
-											replaceDashesAndUnderscores(
-												decodedData[key].toString(),
-											),
-										),
-									)}
-							</div>
+							renderDNAMapping(key)
 						))}
 					</div>
 				</Typography>

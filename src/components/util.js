@@ -1,14 +1,8 @@
 export const addSpaceBeforeNumbers = (text) => {
-	if (typeof text !== 'string') {
-		return text;
-	}
 	return text.replace(/(\d+)/g, ' $1');
 };
 
 export const camelCaseToTitleCase = (text) => {
-	if (typeof text !== 'string') {
-		return text;
-	}
 
 	return text
 		.split(/(?=[A-Z])/)
@@ -17,17 +11,11 @@ export const camelCaseToTitleCase = (text) => {
 };
 
 export const replaceDashesAndUnderscores = (text) => {
-	if (typeof text !== 'string') {
-		return text;
-	}
 
 	return text.replace(/[_-]/g, ' ');
 };
 
 export const snakeCaseToTitleCase = (text) => {
-	if (typeof text !== 'string') {
-		return text;
-	}
 
 
 	return text
@@ -37,9 +25,6 @@ export const snakeCaseToTitleCase = (text) => {
 };
 
 export const toTitleCase = (text) => {
-	if (typeof text !== 'string') {
-		return text;
-	}
 
 
 	return text.replace(/\w\S*/g, function (match) {
