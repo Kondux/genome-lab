@@ -93,7 +93,7 @@ function DNADecoder() {
 
 	const renderDecodedData = (str) => {
 		const arr = snakeCaseToTitleCase(str).split(' ');
-		arr.pop();
+		// arr.pop();
 		return arr.join(' ');
 	};
 
@@ -122,21 +122,38 @@ function DNADecoder() {
 				>
 					<div>
 						{Object.keys(decodedData).map((key) => (
-							<div key={key}>
+							<div key={key} style={{display: 'flex', justifyContent: 'center', gap: '1rem'}} >
 								<strong>{renderDecodedData(key)}: </strong>{' '}
 								{key.endsWith('_color')
-									? addSpaceBeforeNumbers(
-											camelCaseToTitleCase(
+									?
+									<div style={{display: 'flex', justifyContent: 'center'}}>
+										<div
+											style={{
+												backgroundColor: decodedData[key].hex,
+												border: '2px white solid',
+												aspectRatio: '1',
+												height: '1.5rem',
+												borderRadius: '50%',
+												marginRight: '0.5rem',
+												marginTop: '0.7rem'
+											}}
+										/>
+										{
+
+											addSpaceBeforeNumbers(
+												camelCaseToTitleCase(
+													decodedData[key].name,
+												),
+											)
+										}
+									</div>
+									: snakeCaseToTitleCase(
+										addSpaceBeforeNumbers(
+											replaceDashesAndUnderscores(
 												decodedData[key].toString(),
 											),
-										)
-									: snakeCaseToTitleCase(
-											addSpaceBeforeNumbers(
-												replaceDashesAndUnderscores(
-													decodedData[key].toString(),
-												),
-											),
-										)}
+										),
+									)}
 							</div>
 						))}
 					</div>
