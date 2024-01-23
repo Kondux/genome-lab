@@ -81,7 +81,7 @@ function DNADecoder() {
 		// Determine the correct DNA key
 		const collectionType = protocolVersions['v1'][collectionGene];
 		if (collectionType) {
-			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
+			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					// Proceed with decoding using the loaded DNA key
 					const decodedResults = decodeDNA(key.default);

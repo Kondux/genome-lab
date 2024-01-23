@@ -17,7 +17,7 @@ import {
 	camelCaseToTitleCase,
 	addSpaceBeforeNumbers,
 	toTitleCase,
-} from './util';
+} from '../util';
 
 // Import the color palette
 import geneColorPalette from '../data/gene_color_pallet.json';
@@ -44,7 +44,7 @@ function DNAEncoder() {
 				setCollectionTypes(data[`v${protocolVersion}`]);
 			});
 		if (collectionType) {
-			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
+			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					setDnaKey(key.default);
 					const initialInputValues = {};
