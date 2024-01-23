@@ -66,12 +66,6 @@ function DNADecoder() {
 		return color || 'Unknown';
 	};
 
-	const isValidDNA = (key) => {
-		// Test if the DNA string is a number or hex value
-		if (key === undefined) return false;
-		return !isNaN(parseInt(key, 16));
-	};
-
 	const handleSubmit = () => {
 		// Set the DNA key
 		if (!dnaString) return;
@@ -98,14 +92,41 @@ function DNADecoder() {
 		setDnaString(event.target.value);
 	};
 
-	const renderDecodedData = (str) => {
-		const arr = snakeCaseToTitleCase(str).split(' ');
-		// arr.pop();
-		return arr.join(' ');
+	const renderGeneByKey = (key) => {
+		const geneType = key.split('_').pop();
+		switch (geneType) {
+			case 'color':
+				return (
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<ColorIndicator
+							color={decodedData[key].hex}
+							margin='0 0.5rem 0 0'
+						/>
+						{addSpaceBeforeNumbers(
+							camelCaseToTitleCase(decodedData[key].name),
+						) || 'Unknown'}
+					</div>
+				);
+			case 'id':
+				return (
+					snakeCaseToTitleCase(
+						addSpaceBeforeNumbers(
+							replaceDashesAndUnderscores(
+								decodedData[key].toString(),
+							),
+						),
+					) || 'Unknown'
+				);
+			case 'int':
+				return isNaN(decodedData[key]) ? 'Unknown' : decodedData[key];
+			case 'bool':
+				return decodedData[key] ? 'Yes' : 'No';
+			default:
+				return decodedData[key];
+		}
 	};
 
 	const renderDNAMapping = (key) => {
-		// Check thats it is a string and defined
 		if (typeof key !== 'string' && key !== undefined) {
 			return 'Unknown';
 		}
@@ -120,28 +141,8 @@ function DNADecoder() {
 					gap: '1rem',
 				}}
 			>
-				<strong>{renderDecodedData(key)}: </strong>{' '}
-				{key.endsWith('_color') ? (
-					<div style={{ display: 'flex', alignItems: 'center' }}>
-						<ColorIndicator
-							color={decodedData[key].hex}
-							margin='0 0.5rem 0 0'
-						/>
-						{addSpaceBeforeNumbers(
-							camelCaseToTitleCase(decodedData[key].name),
-						)}
-					</div>
-				) : isValidDNA(decodedData[key]) ? (
-					snakeCaseToTitleCase(
-						addSpaceBeforeNumbers(
-							replaceDashesAndUnderscores(
-								decodedData[key].toString(),
-							),
-						),
-					)
-				) : (
-					'Unknown'
-				)}
+				<strong>{snakeCaseToTitleCase(key)}: </strong>{' '}
+				{renderGeneByKey(key)}
 			</div>
 		);
 	};
