@@ -1,5 +1,5 @@
 const isValidText = (text) => {
-	return text !== undefined;
+	return text !== undefined && typeof text === 'string';
 };
 
 export const addSpaceBeforeNumbers = (text) => {

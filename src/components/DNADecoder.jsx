@@ -127,10 +127,6 @@ function DNADecoder() {
 	};
 
 	const renderDNAMapping = (key) => {
-		if (typeof key !== 'string' && key !== undefined) {
-			return 'Unknown';
-		}
-
 		return (
 			<div
 				id='decoder-results'
