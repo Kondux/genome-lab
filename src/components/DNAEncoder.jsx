@@ -18,6 +18,7 @@ import {
 	addSpaceBeforeNumbers,
 	toTitleCase,
 } from '../util';
+import ColorIndicator from './ColorIndicator';
 
 // Import the color palette
 import geneColorPalette from '../data/gene_color_pallet.json';
@@ -159,15 +160,9 @@ function DNAEncoder() {
 							{Object.entries(geneColorPalette).map(
 								([key, { name, hex }]) => (
 									<MenuItem key={key} value={key}>
-										<div
-											style={{
-												backgroundColor: hex,
-												border: '2px white solid',
-												aspectRatio: '1',
-												height: '1rem',
-												borderRadius: '50%',
-												marginRight: '0.5rem',
-											}}
+										<ColorIndicator
+											color={hex}
+											margin='0 0.5rem 0 0'
 										/>
 										{addSpaceBeforeNumbers(
 											camelCaseToTitleCase(

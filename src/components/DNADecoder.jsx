@@ -10,6 +10,7 @@ import {
 	camelCaseToTitleCase,
 	snakeCaseToTitleCase,
 } from '../util';
+import ColorIndicator from './ColorIndicator';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -121,23 +122,14 @@ function DNADecoder() {
 			>
 				<strong>{renderDecodedData(key)}: </strong>{' '}
 				{key.endsWith('_color') ? (
-					<div style={{ display: 'flex', justifyContent: 'center' }}>
-						<div
-							style={{
-								backgroundColor: decodedData[key].hex,
-								border: '2px white solid',
-								aspectRatio: '1',
-								height: '1.5rem',
-								borderRadius: '50%',
-								marginRight: '0.5rem',
-								marginTop: '0.7rem',
-							}}
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<ColorIndicator
+							color={decodedData[key].hex}
+							margin='0 0.5rem 0 0'
 						/>
-						{isValidDNA(decodedData[key])
-							? addSpaceBeforeNumbers(
-									camelCaseToTitleCase(decodedData[key].name),
-								)
-							: 'Unknown'}
+						{addSpaceBeforeNumbers(
+							camelCaseToTitleCase(decodedData[key].name),
+						)}
 					</div>
 				) : isValidDNA(decodedData[key]) ? (
 					snakeCaseToTitleCase(

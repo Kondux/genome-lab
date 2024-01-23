@@ -121,12 +121,10 @@ const theme = createTheme({
 		},
 		MuiSelect: {
 			styleOverrides: {
-				root: {
-					// verticalAlign: 'middle',
-				},
 				select: {
 					display: 'flex',
-					gap: '0.5rem',
+					flexDirection: 'row',
+					alignItems: 'center',
 				},
 			},
 		},
