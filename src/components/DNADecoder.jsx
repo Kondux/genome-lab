@@ -2,14 +2,14 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
-import geneColorPalette from '../../data/gene_color_pallet.json';
-import protocolVersions from '../../data/protocol_versions.json';
+import geneColorPalette from '../data/gene_color_pallet.json';
+import protocolVersions from '../data/protocol_versions.json';
 import {
 	replaceDashesAndUnderscores,
 	addSpaceBeforeNumbers,
 	camelCaseToTitleCase,
 	snakeCaseToTitleCase,
-} from '../util';
+} from './util';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');

@@ -17,10 +17,10 @@ import {
 	camelCaseToTitleCase,
 	addSpaceBeforeNumbers,
 	toTitleCase,
-} from '../util';
+} from './util';
 
 // Import the color palette
-import geneColorPalette from '../../data/gene_color_pallet.json';
+import geneColorPalette from '../data/gene_color_pallet.json';
 
 // Encoder functions
 const encodeInt = (value, byteSize) => {
@@ -40,7 +40,7 @@ function DNAEncoder() {
 
 	useEffect(() => {
 		if (protocolVersion)
-			import('../../data/protocol_versions.json').then((data) => {
+			import('../data/protocol_versions.json').then((data) => {
 				setCollectionTypes(data[`v${protocolVersion}`]);
 			});
 		if (collectionType) {
