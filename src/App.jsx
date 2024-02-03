@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { AppBar, Tabs, Tab, Box } from '@mui/material';
 
-import DNAEncoder from './components/DNAEncoder/DNAEncoder';
-import DNADecoder from './components/DNADecoder/DNADecoder';
+import DNAEncoder from './components/DNAEncoder';
+import DNADecoder from './components/DNADecoder';
 
 function App() {
 	const [tabValue, setTabValue] = useState(0);

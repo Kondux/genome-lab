@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 
-import geneColorPalette from '../../data/gene_color_pallet.json';
-import protocolVersions from '../../data/protocol_versions.json';
+import geneColorPalette from '../data/gene_color_pallet.json';
+import protocolVersions from '../data/protocol_versions.json';
 import {
 	replaceDashesAndUnderscores,
 	addSpaceBeforeNumbers,
 	camelCaseToTitleCase,
 	snakeCaseToTitleCase,
 } from '../util';
+import ColorIndicator from './ColorIndicator';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
@@ -47,6 +48,7 @@ function DNADecoder() {
 			} else if (gene.endsWith('_color')) {
 				decodedResults[gene] = decodeColor(geneValue);
 			}
+			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
 		});
 
@@ -61,7 +63,7 @@ function DNADecoder() {
 
 	const decodeColor = (value) => {
 		const color = geneColorPalette[value];
-		return color ? color.name : 'Unknown';
+		return color || 'Unknown';
 	};
 
 	const handleSubmit = () => {
@@ -74,7 +76,7 @@ function DNADecoder() {
 		// Determine the correct DNA key
 		const collectionType = protocolVersions['v1'][collectionGene];
 		if (collectionType) {
-			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
+			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					// Proceed with decoding using the loaded DNA key
 					const decodedResults = decodeDNA(key.default);
@@ -90,10 +92,55 @@ function DNADecoder() {
 		setDnaString(event.target.value);
 	};
 
-	const renderDecodedData = (str) => {
-		const arr = snakeCaseToTitleCase(str).split(' ');
-		arr.pop();
-		return arr.join(' ');
+	const renderGeneByKey = (key) => {
+		const geneType = key.split('_').pop();
+		switch (geneType) {
+			case 'color':
+				return (
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<ColorIndicator
+							color={decodedData[key].hex}
+							margin='0 0.5rem 0 0'
+						/>
+						{addSpaceBeforeNumbers(
+							camelCaseToTitleCase(decodedData[key].name),
+						) || 'Unknown'}
+					</div>
+				);
+			case 'id':
+				return (
+					snakeCaseToTitleCase(
+						addSpaceBeforeNumbers(
+							replaceDashesAndUnderscores(
+								decodedData[key].toString(),
+							),
+						),
+					) || 'Unknown'
+				);
+			case 'int':
+				return isNaN(decodedData[key]) ? 'Unknown' : decodedData[key];
+			case 'bool':
+				return decodedData[key] ? 'Yes' : 'No';
+			default:
+				return decodedData[key];
+		}
+	};
+
+	const renderDNAMapping = (key) => {
+		return (
+			<div
+				id='decoder-results'
+				key={key}
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					gap: '1rem',
+				}}
+			>
+				<strong>{snakeCaseToTitleCase(key)}: </strong>{' '}
+				{renderGeneByKey(key)}
+			</div>
+		);
 	};
 
 	return (
@@ -120,24 +167,9 @@ function DNADecoder() {
 					}}
 				>
 					<div>
-						{Object.keys(decodedData).map((key) => (
-							<div key={key}>
-								<strong>{renderDecodedData(key)}: </strong>{' '}
-								{key.endsWith('_color')
-									? addSpaceBeforeNumbers(
-											camelCaseToTitleCase(
-												decodedData[key].toString(),
-											),
-										)
-									: snakeCaseToTitleCase(
-											addSpaceBeforeNumbers(
-												replaceDashesAndUnderscores(
-													decodedData[key].toString(),
-												),
-											),
-										)}
-							</div>
-						))}
+						{Object.keys(decodedData).map((key) =>
+							renderDNAMapping(key),
+						)}
 					</div>
 				</Typography>
 			)}

@@ -18,9 +18,10 @@ import {
 	addSpaceBeforeNumbers,
 	toTitleCase,
 } from '../util';
+import ColorIndicator from './ColorIndicator';
 
 // Import the color palette
-import geneColorPalette from '../../data/gene_color_pallet.json';
+import geneColorPalette from '../data/gene_color_pallet.json';
 
 // Encoder functions
 const encodeInt = (value, byteSize) => {
@@ -40,11 +41,11 @@ function DNAEncoder() {
 
 	useEffect(() => {
 		if (protocolVersion)
-			import('../../data/protocol_versions.json').then((data) => {
+			import('../data/protocol_versions.json').then((data) => {
 				setCollectionTypes(data[`v${protocolVersion}`]);
 			});
 		if (collectionType) {
-			import(`../../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
+			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
 					setDnaKey(key.default);
 					const initialInputValues = {};
@@ -157,8 +158,12 @@ function DNAEncoder() {
 							label={snakeCaseToTitleCase(gene)}
 						>
 							{Object.entries(geneColorPalette).map(
-								([key, { name }]) => (
+								([key, { name, hex }]) => (
 									<MenuItem key={key} value={key}>
+										<ColorIndicator
+											color={hex}
+											margin='0 0.5rem 0 0'
+										/>
 										{addSpaceBeforeNumbers(
 											camelCaseToTitleCase(
 												replaceDashesAndUnderscores(
