@@ -1,0 +1,43 @@
+{
+	"key_type": "One_Handed_Weapons",
+	"genes": {
+		"version_int": 1,
+		"nft_boost_int": 1,
+		"collection_id": 1,
+		"mint_number_int": 2,
+        "weapon_id": 2,
+        "weapon_type_id": 1,
+        "pierce_damage": 1,
+        "blunt_damage": 1,
+        "energy_damage": 1,
+        "BCM1_id": 1,
+        "BCM2_id": 1,
+        "BCM3_id": 1,
+        "BCM4_id": 1,
+        "BCM5_id": 1,
+        "BCM6_id": 1,
+        "BCM7_id": 1,
+        "BCM8_id": 1,
+        "BCM9_id": 1
+    },
+    "collection_ids": {
+        "Persona": "01",
+		"Avatar": "02",
+        "Armor": "03",
+        "Accessories": "04",
+        "One_Handed_Weapons": "05",
+        "Two_Handed_Weapons": "06",
+        "Photon": "ff"
+    },
+    "weapon_ids": {
+        "Sci-Fi assult rifle": "01",
+        "Fantasy Style Crystal Sword": "02",
+        "K1911 pistol": "03",
+        FINISH ME
+    },
+    "weapon_type_ids": {
+        "Ranged": "01",
+        "Melee": "02"
+    }
+    FINISH ME
+}
