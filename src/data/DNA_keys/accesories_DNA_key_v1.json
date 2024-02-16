@@ -1,0 +1,69 @@
+{
+	"key_type": "Accessories",
+	"genes": {
+		"version_int": 1,
+		"nft_boost_int": 1,
+		"collection_id": 1,
+		"mint_number_int": 2,
+        "wearable_location_id": 1,
+        "accessory_id": 1,
+        "passive_bonus_type_id": 1,
+        "passive_bonus_int": 1,
+        "active_bonus_type_id": 1,
+        "active_bonus_int": 1,
+        "BCM1_id": 1,
+        "BCM2_id": 1,
+        "BCM3_id": 1,
+        "BCM4_id": 1,
+        "BCM5_id": 1,
+        "BCM6_id": 1,
+        "BCM7_id": 1,
+        "BCM8_id": 1,
+        "BCM9_id": 1
+    },
+    "collection_ids": {
+        "Persona": "01",
+		"Avatar": "02",
+        "Armor": "03",
+        "Accessories": "04",
+        "One_Handed_Weapons": "05",
+        "Two_Handed_Weapons": "06",
+        "Photon": "ff"
+    },
+    "wearable_location_ids": {
+        "head": "01",
+        "body": "02",
+        "arm": "03",
+        "arms": "04"
+    },
+    "accessory_ids": {
+        "Round Wooden Shield": "01",
+        "Circular Cross Shield": "02",
+        "Templar Style Shield": "03",
+        "Full Face metal Helmet": "04",
+        "Open Face Fantasy Helmet": "05",
+        "Viking Style Helmet with Horns V1": "06",
+        "Viking Style Helmet with Horns V2": "07",
+        "Viking Style Helmet with Horns V3": "08",
+        "WWII Style Water Canteen": "09",
+        "WWII Style Backpack": "0a",
+        "WWII Style Pouches": "0b",
+        "Black Necklace with dices": "0c",
+        "Golden Medallion with crystal necklace": "0d",
+        "Golden Crescent Moon Necklace": "0e",
+        "Small Crystal Necklace V1": "0f",
+        "Silver Skull Necklace": "10",
+        "Golden Skull Necklace": "11",
+        "Crescent Moon Necklace with Star V1": "12",
+        "Crescent Moon Necklace with Star V2": "13",
+        "Small Crystal Necklace V2": "14",
+        "Silver Crescent Moon Necklace": "15",
+        "Silver Medallion with crystal necklace": "16",
+        "Silver and Black Rectangular Shield with Spider": "17",
+        "Silver Cross Necklace with Diamonds": "18"
+    },
+    "passive_bonus_type_ids": {
+    },
+    "active_bonus_type_ids": {
+    }  
+}
