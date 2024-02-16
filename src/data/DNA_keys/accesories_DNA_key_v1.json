@@ -1,5 +1,5 @@
 {
-	"key_type": "Accessories",
+	"key_type": "Accessory",
 	"genes": {
 		"version_int": 1,
 		"nft_boost_int": 1,
@@ -25,9 +25,8 @@
         "Persona": "01",
 		"Avatar": "02",
         "Armor": "03",
-        "Accessories": "04",
-        "One_Handed_Weapons": "05",
-        "Two_Handed_Weapons": "06",
+        "Accessory": "04",
+        "Weapon": "05",
         "Photon": "ff"
     },
     "wearable_location_ids": {
