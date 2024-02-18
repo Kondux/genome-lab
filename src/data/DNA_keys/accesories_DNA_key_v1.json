@@ -102,8 +102,9 @@
         "Silver and Black Rectangular Shield with Spider": {},
         "Silver Cross Necklace with Diamonds": {}
     },
-    "Variant2_ids": {
-        "OVERIDE: ID CASCADE": ["accessory_id"],
+    "Variant2_cascade": {
+        "reference_genes": ["accessory_id"],
+        "cascade_type": "id",
         "Round Wooden Shield": {},
         "Circular Cross Shield": {},
         "Templar Style Shield": {},
@@ -129,8 +130,9 @@
         "Silver and Black Rectangular Shield with Spider": {},
         "Silver Cross Necklace with Diamonds": {}
     },
-    "Variant3_ids": {
-        "OVERIDE: ID CASCADE": ["accessory_id"],
+    "Variant3_cascade": {
+        "reference_genes": ["accessory_id"],
+        "cascade_type": "id",
         "Round Wooden Shield": {},
         "Circular Cross Shield": {},
         "Templar Style Shield": {},
@@ -156,8 +158,9 @@
         "Silver and Black Rectangular Shield with Spider": {},
         "Silver Cross Necklace with Diamonds": {}
     },
-    "Variant4_ids": {
-        "OVERIDE: ID CASCADE": ["accessory_id"],
+    "Variant4_cascade": {
+        "reference_genes": ["accessory_id"],
+        "cascade_type": "id",
         "Round Wooden Shield": {},
         "Circular Cross Shield": {},
         "Templar Style Shield": {},
@@ -183,8 +186,9 @@
         "Silver and Black Rectangular Shield with Spider": {},
         "Silver Cross Necklace with Diamonds": {}
     },
-    "Variant5_ids": {
-        "OVERIDE: ID CASCADE": ["accessory_id"],
+    "Variant5_cascade": {
+        "reference_genes": ["accessory_id"],
+        "cascade_type": "id",
         "Round Wooden Shield": {},
         "Circular Cross Shield": {},
         "Templar Style Shield": {},
