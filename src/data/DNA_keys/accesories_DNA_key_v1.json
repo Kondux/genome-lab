@@ -22,13 +22,7 @@
         "Variant5_cascade": 1,
         "Variant5_color": 1,
         "Variant6_cascade": 1,
-        "Variant6_color": 1,
-        "Variant7_cascade": 1,
-        "Variant7_color": 1,
-        "Variant8_cascade": 1,
-        "Variant8_color": 1,
-        "Variant9_cascade": 1,
-        "Variant9_color": 1
+        "Variant6_color": 1
     },
     "collection_ids": {
         "Persona": "01",
