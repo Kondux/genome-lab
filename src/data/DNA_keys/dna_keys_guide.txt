@@ -1,0 +1,28 @@
+Types:
+
+Name: the name of the type 
+Declare: the string to put at the end of a gene name to indicate that its this type
+Function: the function of the type
+Include: What, if anything, needs to be included in the DNA key for this type to function correctly
+        $ = replace with actual value
+Example: An example implementation
+
+Name: Cascade
+declare: _cascade
+Function: uses another gene to overmap the current gene
+Include: 
+  "$CascadeGeneName_cascade": {
+    "reference_genes": A list of reference genes in order they should be referenced,
+    "cascade_type": The actual type of the output gene
+    root level of the cascade hash table
+ }
+Example:
+gene: example_gene_cascade
+actual type: int
+reference genes: example_reference_bool, example_reference_id
+    "example_gene_cascade": {
+        "reference_genes": ["example_reference_bool", "example_reference_id"],
+        "cascade_type": "int",
+        "True": {"reference_id_1": 1, "reference_id_2": 2},
+        "False": {"reference_id_1": 0, "reference_id_2": 0},
+    }
