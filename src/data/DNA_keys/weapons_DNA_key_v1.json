@@ -7,9 +7,10 @@
 		"mint_number_int": 2,
         "weapon_id": 2,
         "weapon_type_id": 1,
-        "pierce_damage": 1,
-        "blunt_damage": 1,
-        "energy_damage": 1,
+        "range_int": 1,
+        "pierce_damage_int": 1,
+        "blunt_damage_int": 1,
+        "energy_damage_int": 1, 
         "Variant1_cascade": 1,
         "Variant1_color": 1,
         "Variant2_cascade": 1,
@@ -38,8 +39,10 @@
         FINISH ME
     },
     "weapon_type_ids": {
-        "Ranged": "01",
-        "Melee": "02"
+        "One handed Ranged": "01",
+        "Two handed Ranged": "02",
+        "One handed Melee": "03",
+        "Two handed Melee": "04"
     }
     FINISH ME
 }
