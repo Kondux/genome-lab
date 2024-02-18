@@ -65,8 +65,10 @@
         "Silver Cross Necklace with Diamonds": "18"
     },
     "passive_bonus_type_ids": {
+        "N/A": "00"
     },
     "active_bonus_type_ids": {
+        "N/A": "00"
     },
     "Variant1_cascade": {
         "reference_genes": ["accessory_id"],
