@@ -1,0 +1,31 @@
+{
+	"key_type": "Armor",
+	"genes": {
+		"version_int": 1,
+		"nft_boost_int": 1,
+		"collection_id": 1,
+		"mint_number_int": 2,
+        "armor_ids": 1,
+        "visor_material_id": 1,
+        "visor_color": 1,
+        "base_material_id": 1,
+        "base_color": 1,
+        "auxillary1_id": 1,
+        "auxillary1_color": 1,
+        "auxillary2_id": 1,
+        "auxillary2_color": 1,
+        "auxillary3_id": 1,
+        "auxillary3_color": 1
+	},
+    "collection_ids": {
+        "Persona": "01",
+		"Avatar": "02",
+        "Armor": "03",
+        "Accessory": "04",
+        "Weapon": "05",
+        "Photon": "ff"
+    },
+    "armor_ids": {
+
+    }
+}
