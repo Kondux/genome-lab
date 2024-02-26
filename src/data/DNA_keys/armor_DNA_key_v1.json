@@ -10,15 +10,15 @@
         "pierce_defense_bonus_int": 1,
         "blunt_defense_bonus_int": 1,
         "energy_defense_bonus_int": 1,
-        "visor_material_id": 1,
+        "visor_material_cascade": 1,
         "visor_color": 1,
-        "base_material_id": 1,
-        "base_color": 1,
-        "auxiliary1_material_id": 1,
+        "main_material_cascade": 1,
+        "main_color": 1,
+        "auxiliary1_material_cascade": 1,
         "auxiliary1_color": 1,
-        "auxiliary2_material_id": 1,
+        "auxiliary2_material_cascade": 1,
         "auxiliary2_color": 1,
-        "auxiliary3_material_id": 1,
+        "auxiliary3_material_cascade": 1,
         "auxiliary3_color": 1
 	},
     "collection_ids": {
@@ -30,6 +30,79 @@
         "Photon": "ff"
     },
     "armor_ids": {
-
+        "armorV1": "01",
+        "armorV2": "02",
+        "armorV3": "03",
+        "armorV4": "04",
+        "armorV5": "05",
+        "armorV6": "06",
+        "armorV7": "07",
+        "armorV8": "08",
+        "armorV9": "09"
+    },
+    "visor_material_cascade": {
+        "reference_genes": ["armor_id"],
+        "cascade_type": "id",
+        "armorv1": {},
+        "armorv2": {},
+        "armorv3": {},
+        "armorv4": {},
+        "armorv5": {},
+        "armorv6": {},
+        "armorv7": {},
+        "armorv8": {},
+        "armorv9": {}
+    },
+    "base_material_cascade": {
+        "reference_genes": ["armor_id"],
+        "cascade_type": "id",
+        "armorv1": {},
+        "armorv2": {},
+        "armorv3": {},
+        "armorv4": {},
+        "armorv5": {},
+        "armorv6": {},
+        "armorv7": {},
+        "armorv8": {},
+        "armorv9": {}
+    },
+    "auxiliary1_material_cascade": {
+        "reference_genes": ["armor_id"],
+        "cascade_type": "id",
+        "armorv1": {},
+        "armorv2": {},
+        "armorv3": {},
+        "armorv4": {},
+        "armorv5": {},
+        "armorv6": {},
+        "armorv7": {},
+        "armorv8": {},
+        "armorv9": {}
+    },
+    "auxiliary2_material_cascade": {
+        "reference_genes": ["armor_id"],
+        "cascade_type": "id",
+        "armorv1": {},
+        "armorv2": {},
+        "armorv3": {},
+        "armorv4": {},
+        "armorv5": {},
+        "armorv6": {},
+        "armorv7": {},
+        "armorv8": {},
+        "armorv9": {}
+    },
+    "auxiliary3_material_cascade": {
+        "reference_genes": ["armor_id"],
+        "cascade_type": "id",
+        "armorv1": {},
+        "armorv2": {},
+        "armorv3": {},
+        "armorv4": {},
+        "armorv5": {},
+        "armorv6": {},
+        "armorv7": {},
+        "armorv8": {},
+        "armorv9": {}
     }
 }
