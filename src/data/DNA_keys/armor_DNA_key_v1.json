@@ -14,12 +14,12 @@
         "visor_color": 1,
         "base_material_id": 1,
         "base_color": 1,
-        "auxillary1_id": 1,
-        "auxillary1_color": 1,
-        "auxillary2_id": 1,
-        "auxillary2_color": 1,
-        "auxillary3_id": 1,
-        "auxillary3_color": 1
+        "auxiliary1_material_id": 1,
+        "auxiliary1_color": 1,
+        "auxiliary2_material_id": 1,
+        "auxiliary2_color": 1,
+        "auxiliary3_material_id": 1,
+        "auxiliary3_color": 1
 	},
     "collection_ids": {
         "Persona": "01",
