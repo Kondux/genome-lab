@@ -46,7 +46,7 @@ function DNADecoder() {
 			} else if (gene.endsWith('_bool')) {
 				decodedResults[gene] = geneValue === '01';
 			} else if (gene.endsWith('_color')) {
-				decodedResults[gene] = decodeColor(geneValue);
+				decodedResults[gene] = decodeColor(geneValue.toUpperCase());
 			}
 			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
