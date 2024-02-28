@@ -53,9 +53,9 @@
 		"Skin1_bio3": "04",
 		"Skin1_bio4": "05",
 		"Skin1_bio5": "06",
-		"Skin2": "01",
-		"Skin2_bio1": "01",
-		"Skin2_bio2": "01",
+		"Skin2": "08",
+		"Skin2_bio1": "09",
+		"Skin2_bio2": "0a",
 		"Skin2_bio3": "01",
 		"Skin2_bio4": "01",
 		"Skin2_bio5": "01",
@@ -101,7 +101,10 @@
 		"Anunnaki3": "01",
 		"Pleiadian1": "01",
 		"Pleiadian2": "01",
-		"Pleiadian3": "01"
+		"Pleiadian3": "01",
+		"Nano1": "01",
+		"Nano2": "01",
+		"Nano3": "01"
 	},
 	"eye_right_ids": {
 		"CyGrey_Eye1": "01",
