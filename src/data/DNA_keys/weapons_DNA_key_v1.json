@@ -32,7 +32,7 @@
         "Photon": "ff"
     },
     "weapon_ids": {
-        "SciFi_long_rifle": "01", # Has 2 groups, needs more
+        "SciFi_long_rifle": "01",
         "Fantasy_style_sword": "02",
         "K1911_pistol": "03",
         "Energy_sword_short": "04",
