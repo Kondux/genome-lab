@@ -19,7 +19,9 @@
         "auxiliary2_material_id": 1,
         "auxiliary2_color": 1,
         "auxiliary3_material_id": 1,
-        "auxiliary3_color": 1
+        "auxiliary3_color": 1,
+        "mag_suit_material_id": 1,
+        "mag_suit_color": 1
 	},
     "collection_ids": {
         "Persona": "01",
@@ -49,5 +51,7 @@
     "auxiliary2_material_ids": {
     },
     "auxiliary3_material_ids": {
+    },
+    "mag_suit_material_ids": {
     }
 }
