@@ -69,6 +69,9 @@
     "active_bonus_type_ids": {
         "N/A": "00"
     },
+    "audio_track_ids": {
+        "N/A": "00"
+    },
     "Variant1_cascade": {
         "reference_genes": ["accessory_id"],
         "cascade_type": "id",
