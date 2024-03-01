@@ -70,7 +70,13 @@
         "N/A": "00"
     },
     "audio_track_ids": {
-        "N/A": "00"
+        "N/A": "00",
+        "Club_Riza": "01",
+        "GTFAlien": "02",
+        "MoAlien": "03",
+        "Skeep": "04",
+        "SwampWalk": "05",
+        "ThickJuice": "06"
     },
     "Variant1_cascade": {
         "reference_genes": ["accessory_id"],
