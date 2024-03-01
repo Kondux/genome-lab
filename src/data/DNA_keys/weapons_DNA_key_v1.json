@@ -12,16 +12,16 @@
         "pierce_damage_bonus_int": 1,
         "blunt_damage_bonus_int": 1,
         "energy_damage_bonus_int": 1, 
-        "variant1_cascade": 1,
-        "variant1_color": 1,
-        "variant2_cascade": 1,
-        "variant2_color": 1,
-        "variant3_cascade": 1,
-        "variant3_color": 1,
-        "variant4_cascade": 1,
-        "variant4_color": 1,
-        "variant5_cascade": 1,
-        "variant5_color": 1
+        "Variant1_material_cascade": 1,
+        "Variant1_color": 1,
+        "Variant2_material_cascade": 1,
+        "Variant2_color": 1,
+        "Variant3_material_cascade": 1,
+        "Variant3_color": 1,
+        "Variant4_material_cascade": 1,
+        "Variant4_color": 1,
+        "Variant5_material_cascade": 1,
+        "Variant5_color": 1
     },
     "collection_ids": {
         "Persona": "01",
@@ -110,10 +110,7 @@
         "": "4c",
         "": "4d",
         "": "4e",
-        "": "4f",
-        
-
-
+        "": "4f"
     },
     "weapon_type_ids": {
         "one_handed_Ranged": "01",
