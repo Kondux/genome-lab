@@ -7,7 +7,6 @@
 		"mint_number_int": 2,
         "weapon_id": 2,
         "weapon_type_id": 1,
-        "range_int": 1,
         "base_damage_int": 1,
         "pierce_damage_bonus_int": 1,
         "blunt_damage_bonus_int": 1,
