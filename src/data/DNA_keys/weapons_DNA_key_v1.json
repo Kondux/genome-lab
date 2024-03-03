@@ -99,7 +99,7 @@
         "one_handed_Melee": "03",
         "two_handed_Melee": "04"
     },
-    "Variant1_cascade":
+    "Variant1_material_cascade":
         {"reference_genes": ["weapon_id"],
         "cascade_type": "id",
         "SciFi_sniper_rifle": {},
@@ -163,7 +163,7 @@
         "Roman_sword": {},
         "Royal_trident_spear": {},
         "Medieval_crossbow": {}},
-    "Variant2_cascade":
+    "Variant2_material_cascade":
         {"reference_genes": ["weapon_id"],
         "cascade_type": "id",
         "SciFi_sniper_rifle": {},
@@ -227,7 +227,7 @@
         "Roman_sword": {},
         "Royal_trident_spear": {"N/A": "00"},
         "Medieval_crossbow": {"N/A": "00"}},
-    "Variant3_cascade":
+    "Variant3_material_cascade":
         {"reference_genes": ["weapon_id"],
         "cascade_type": "id",
         "SciFi_sniper_rifle": {},
@@ -291,7 +291,7 @@
         "Roman_sword": {},
         "Royal_trident_spear": {"N/A": "00"},
         "Medieval_crossbow": {"N/A": "00"}},
-    "Variant4_cascade":
+    "Variant4_material_cascade":
         {"reference_genes": ["weapon_id"],
         "cascade_type": "id",
         "SciFi_sniper_rifle": {"N/A": "00"},
@@ -355,7 +355,7 @@
         "Roman_sword": {"N/A": "00"},
         "Royal_trident_spear": {"N/A": "00"},
         "Medieval_crossbow": {"N/A": "00"}},
-    "Variant5_cascade":
+    "Variant5_material_cascade":
         {"reference_genes": ["weapon_id"],
         "cascade_type": "id",
         "SciFi_sniper_rifle": {"N/A": "00"},
