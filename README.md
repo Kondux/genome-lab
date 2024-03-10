@@ -41,7 +41,10 @@ For more about our projects, visit [Kondux](https://www.kondux.info).
 
 ## BETA BREAKDOWN
 
-This is currently a living site and will receive many CI/CD updates as time goes on. 
-While there are a lot of small or stylistic to-dos, some bigger to-dos include:
-- Utilizing the DNA reference key to make the very start of the pipeline data driven to match the rest
-- Adding color outputs to demonstrate the color and/or hex codes of the color
+This is currently a living site and will receive many CI/CD updates as time goes
+on. While there are a lot of small or stylistic to-dos, some bigger to-dos
+include:
+
+-   Utilizing the DNA reference key to make the very start of the pipeline data
+    driven to match the rest
+-   Adding color outputs to demonstrate the color and/or hex codes of the color
