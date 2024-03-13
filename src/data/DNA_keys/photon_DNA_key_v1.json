@@ -12,8 +12,7 @@
 		"kNFT4_token_id_tkn": 3,
 		"kNFT5_token_id_tkn": 3,
 		"kNFT6_token_id_tkn": 3,
-		"kNFT7_token_id_tkn": 3,
-		"kNFT8_token_id_tkn": 3
+		"kNFT7_token_id_tkn": 3
 	},
 	"collection_ids": {
 		"Persona": "01",
