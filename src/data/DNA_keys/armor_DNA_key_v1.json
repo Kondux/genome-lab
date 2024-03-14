@@ -18,8 +18,6 @@
 		"auxiliary1_color": 1,
 		"auxiliary2_material_id": 1,
 		"auxiliary2_color": 1,
-		"auxiliary3_material_id": 1,
-		"auxiliary3_color": 1,
 		"mag_suit_material_id": 1,
 		"mag_suit_color": 1
 	},
@@ -37,15 +35,11 @@
 		"armorV3": "03",
 		"armorV4": "04",
 		"armorV5": "05",
-		"armorV6": "06",
-		"armorV7": "07",
-		"armorV8": "08",
-		"armorV9": "09"
+		"armorV6": "06"
 	},
 	"visor_material_ids": {},
 	"main_material_ids": {},
 	"auxiliary1_material_ids": {},
 	"auxiliary2_material_ids": {},
-	"auxiliary3_material_ids": {},
 	"mag_suit_material_ids": {}
 }
