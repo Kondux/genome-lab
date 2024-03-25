@@ -27,6 +27,7 @@ function DNADecoder() {
 	const decodeDNA = (key) => {
 		let decodedResults = {};
 		let currentPosition = 0;
+		let lastIsVoidCascade = false;
 
 		// Iterate over each gene in the DNA key
 		Object.entries(key.genes).forEach(([gene, length]) => {
@@ -46,9 +47,16 @@ function DNADecoder() {
 			} else if (gene.endsWith('_bool')) {
 				decodedResults[gene] = geneValue === '01';
 			} else if (gene.endsWith('_color')) {
-				decodedResults[gene] = decodeColor(geneValue.toUpperCase());
+				if (!lastIsVoidCascade) {
+					lastIsVoidCascade = false;
+					decodedResults[gene] = decodeColor(geneValue.toUpperCase());
+				}
 			} else if (gene.endsWith('_cascade')) {
-				decodedResults[gene] = decodeCascade(geneValue, key[`${gene}`], decodedResults);
+				const result = decodeCascade(geneValue, key[`${gene}`], decodedResults);
+				if (result !== "Unknown") {
+					decodedResults[gene] = result;
+				} else {
+					lastIsVoidCascade = true;}
             } 
 			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
