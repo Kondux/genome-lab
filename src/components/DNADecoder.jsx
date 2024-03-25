@@ -47,7 +47,9 @@ function DNADecoder() {
 				decodedResults[gene] = geneValue === '01';
 			} else if (gene.endsWith('_color')) {
 				decodedResults[gene] = decodeColor(geneValue.toUpperCase());
-			}
+			} else if (gene.endsWith('_cascade')) {
+				decodedResults[gene] = decodeCascade(geneValue, key[`${gene}`], decodedResults);
+            } 
 			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
 		});
@@ -64,6 +66,32 @@ function DNADecoder() {
 	const decodeColor = (value) => {
 		const color = geneColorPalette[value];
 		return color || 'Unknown';
+	};
+
+	const decodeCascade = (value, keyMapping, decodedResults) => {
+		// First, get the reference gene for the cascade
+		const refGenes = keyMapping["reference_genes"];
+		const cascadeType = keyMapping["cascade_type"];
+		let currentKey = keyMapping;
+		// itterate over the reference genes
+		for (let i = 0; i < refGenes.length; i++) {
+            const refGene = refGenes[i];
+            const refGeneValue = decodedResults[refGene];
+            if (refGeneValue) {
+                currentKey = currentKey[refGeneValue];
+            }
+        }
+		// Now you should be at the end cascade
+		// TODO: seperate this out from both decode DNA and decode Cascade as a seperate function
+		if (cascadeType === 'id') {
+            return decodeId(value, currentKey);
+        } else if (cascadeType === 'int') {
+			return parseInt(value, 16);
+		} else if (cascadeType === 'bool') {
+			return value === '01';
+        } else if (cascadeType === 'color') {
+			return decodeColor(value.toUpperCase());
+		}
 	};
 
 	const handleSubmit = () => {
