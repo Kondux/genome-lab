@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/genome-lab/static/css/main.0d5ed86d.css",
-    "main.js": "/genome-lab/static/js/main.de634531.js",
-    "static/js/309.073d9393.chunk.js": "/genome-lab/static/js/309.073d9393.chunk.js",
-    "static/js/708.eb178c2e.chunk.js": "/genome-lab/static/js/708.eb178c2e.chunk.js",
-    "static/js/969.34f987f0.chunk.js": "/genome-lab/static/js/969.34f987f0.chunk.js",
+    "main.js": "/genome-lab/static/js/main.f2d0f68d.js",
+    "static/js/309.29b21997.chunk.js": "/genome-lab/static/js/309.29b21997.chunk.js",
+    "static/js/708.13038372.chunk.js": "/genome-lab/static/js/708.13038372.chunk.js",
+    "static/js/969.a7d36d48.chunk.js": "/genome-lab/static/js/969.a7d36d48.chunk.js",
     "static/js/935.bc44e36a.chunk.js": "/genome-lab/static/js/935.bc44e36a.chunk.js",
     "static/js/266.826fae19.chunk.js": "/genome-lab/static/js/266.826fae19.chunk.js",
     "static/js/987.854c5e2e.chunk.js": "/genome-lab/static/js/987.854c5e2e.chunk.js",
     "index.html": "/genome-lab/index.html",
-    "main.de634531.js.map": "/genome-lab/static/js/main.de634531.js.map"
+    "main.f2d0f68d.js.map": "/genome-lab/static/js/main.f2d0f68d.js.map"
   },
   "entrypoints": [
     "static/css/main.0d5ed86d.css",
-    "static/js/main.de634531.js"
+    "static/js/main.f2d0f68d.js"
   ]
 }
