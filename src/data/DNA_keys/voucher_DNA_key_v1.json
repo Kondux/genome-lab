@@ -1,0 +1,24 @@
+{
+	"key_type": "voucher",
+	"genes": {
+		"version_int": 1,
+		"nft_boost_int": 1,
+		"collection_id": 1,
+		"mint_number_int": 2,
+		"voucher_id": 1,
+		"tier_int": 1
+	},
+	"collection_ids": {
+		"Persona": "01",
+		"Avatar": "02",
+		"Armor": "03",
+		"Accessory": "04",
+		"Weapon": "05",
+        "Voucher": "fe",
+		"Photon": "ff"
+	},
+	"voucher_ids": {
+		"Armor": "01",
+        "Item": "02"
+	}
+}
