@@ -57,7 +57,10 @@ function DNADecoder() {
 					decodedResults[gene] = result;
 				} else {
 					lastIsVoidCascade = true;}
-            } 
+            } else if (gene.endsWith('_tkn')) {
+				// For now, just decode as int
+				decodedResults[gene] = parseInt(geneValue, 16);
+			}
 			// TODO: ADD TKN and function decode (function can wait)
 			// TODO: Add more decoding logic for other gene types
 		});
@@ -107,7 +110,7 @@ function DNADecoder() {
 		if (!dnaString) return;
 
 		// Extract the collection gene (hardcoded position)
-		const collectionGene = dnaString.slice(4, 6);
+		const collectionGene = dnaString.slice(4, 6).toLowerCase();
 
 		// Determine the correct DNA key
 		const collectionType = protocolVersions['v1'][collectionGene];
