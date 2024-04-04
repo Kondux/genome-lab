@@ -1,7 +1,13 @@
 // DNADecoder.js
 import React, { useState } from 'react';
-import { TextField, Button, Typography } from '@mui/material';
-
+import {
+	TextField,
+	Button,
+	Typography,
+	InputAdornment,
+	IconButton,
+} from '@mui/material';
+import ContentPaste from '@mui/icons-material/ContentPaste';
 import geneColorPalette from '../data/gene_color_pallet.json';
 import protocolVersions from '../data/protocol_versions.json';
 import {
@@ -52,12 +58,17 @@ function DNADecoder() {
 					decodedResults[gene] = decodeColor(geneValue.toUpperCase());
 				}
 			} else if (gene.endsWith('_cascade')) {
-				const result = decodeCascade(geneValue, key[`${gene}`], decodedResults);
-				if (result !== "Unknown") {
+				const result = decodeCascade(
+					geneValue,
+					key[`${gene}`],
+					decodedResults,
+				);
+				if (result !== 'Unknown') {
 					decodedResults[gene] = result;
 				} else {
-					lastIsVoidCascade = true;}
-            } else if (gene.endsWith('_tkn')) {
+					lastIsVoidCascade = true;
+				}
+			} else if (gene.endsWith('_tkn')) {
 				// For now, just decode as int
 				decodedResults[gene] = parseInt(geneValue, 16);
 			}
@@ -81,26 +92,26 @@ function DNADecoder() {
 
 	const decodeCascade = (value, keyMapping, decodedResults) => {
 		// First, get the reference gene for the cascade
-		const refGenes = keyMapping["reference_genes"];
-		const cascadeType = keyMapping["cascade_type"];
+		const refGenes = keyMapping['reference_genes'];
+		const cascadeType = keyMapping['cascade_type'];
 		let currentKey = keyMapping;
 		// itterate over the reference genes
 		for (let i = 0; i < refGenes.length; i++) {
-            const refGene = refGenes[i];
-            const refGeneValue = decodedResults[refGene];
-            if (refGeneValue) {
-                currentKey = currentKey[refGeneValue];
-            }
-        }
+			const refGene = refGenes[i];
+			const refGeneValue = decodedResults[refGene];
+			if (refGeneValue) {
+				currentKey = currentKey[refGeneValue];
+			}
+		}
 		// Now you should be at the end cascade
 		// TODO: seperate this out from both decode DNA and decode Cascade as a seperate function
 		if (cascadeType === 'id') {
-            return decodeId(value, currentKey);
-        } else if (cascadeType === 'int') {
+			return decodeId(value, currentKey);
+		} else if (cascadeType === 'int') {
 			return parseInt(value, 16);
 		} else if (cascadeType === 'bool') {
 			return value === '01';
-        } else if (cascadeType === 'color') {
+		} else if (cascadeType === 'color') {
 			return decodeColor(value.toUpperCase());
 		}
 	};
@@ -187,6 +198,20 @@ function DNADecoder() {
 		);
 	};
 
+	const handlePaste = async () => {
+		try {
+			let text = await navigator.clipboard.readText();
+			// Remove "0x" from the start of the text if present
+			if (text.startsWith('0x')) {
+				text = text.substring(2);
+			}
+			setDnaString(text);
+		} catch (error) {
+			console.error('Failed to read clipboard contents:', error);
+		}
+	};
+	
+
 	return (
 		<div>
 			<TextField
@@ -195,6 +220,19 @@ function DNADecoder() {
 				value={dnaString}
 				onChange={handleDnaStringChange}
 				margin='normal'
+				InputProps={{
+					endAdornment: (
+						<InputAdornment position='end'>
+							<IconButton
+								onClick={handlePaste}
+								edge='end'
+								title='Paste'
+							>
+								<ContentPaste />
+							</IconButton>
+						</InputAdornment>
+					),
+				}}
 			/>
 			<Button variant='contained' onClick={handleSubmit}>
 				Decode DNA
