@@ -2,6 +2,7 @@
 	"v1": {
 		"01": "persona",
 		"02": "avatar",
-		"03": "armor"
+		"fe": "voucher",
+		"ff": "photon"
 	}
 }

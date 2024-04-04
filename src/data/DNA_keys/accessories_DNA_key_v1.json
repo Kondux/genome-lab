@@ -110,7 +110,7 @@
 		"Underbrown": "12",
 		"Wormholes": "13"
 	},
-	"Variant1_cascade":
+	"Variant1_material_cascade":
 		{"reference_genes": ["accessory_id"],
 		"cascade_type": "id",
 		"Right_Arm_Tech": {"default_Main_Body": "01"},
@@ -153,7 +153,7 @@
 		"GrandmaBlue": {"default_Grandma": "01"},
 		"FlourishMoustache": {"default_Stach": "01"},
 		"1930s_Stache": {"default_Groucho": "01"}},
-	"Variant2_cascade":
+	"Variant2_material_cascade":
 		{"reference_genes": ["accessory_id"],
 		"cascade_type": "id",
 		"Right_Arm_Tech": {"default_Accents": "01"},
@@ -196,7 +196,7 @@
 		"GrandmaBlue": {"N/A": "00"},
 		"FlourishMoustache": {"N/A": "00"},
 		"1930s_Stache": {"N/A": "00"}},
-	"Variant3_cascade":
+	"Variant3_material_cascade":
 		{"reference_genes": ["accessory_id"],
 		"cascade_type": "id",
 		"Right_Arm_Tech": {"N/A": "00"},
@@ -239,7 +239,7 @@
 		"GrandmaBlue": {"N/A": "00"},
 		"FlourishMoustache": {"N/A": "00"},
 		"1930s_Stache": {"N/A": "00"}},
-	"Variant4_cascade":
+	"Variant4_material_cascade":
 		{"reference_genes": ["accessory_id"],
 		"cascade_type": "id",
 		"Right_Arm_Tech": {"N/A": "00"},
@@ -282,7 +282,7 @@
 		"GrandmaBlue": {"N/A": "00"},
 		"FlourishMoustache": {"N/A": "00"},
 		"1930s_Stache": {"N/A": "00"}},
-	"Variant5_cascade":
+	"Variant5_material_cascade":
 		{"reference_genes": ["accessory_id"],
 		"cascade_type": "id",
 		"Right_Arm_Tech": {"N/A": "00"},

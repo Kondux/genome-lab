@@ -20,13 +20,13 @@ function App() {
 					onChange={handleTabChange}
 					aria-label='DNA tabs'
 				>
-					<Tab label='Encode DNA' />
 					<Tab label='Decode DNA' />
+					<Tab label='Encode DNA' />
 				</Tabs>
 			</AppBar>
 			<Box id='content-main' p={3}>
-				{tabValue === 0 && <DNAEncoder />}
-				{tabValue === 1 && <DNADecoder />}
+				{tabValue === 0 && <DNADecoder />}
+				{tabValue === 1 && <DNAEncoder />}
 			</Box>
 		</Box>
 	);
