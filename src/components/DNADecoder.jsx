@@ -128,7 +128,12 @@ function DNADecoder() {
 	};
 
 	const handleDnaStringChange = (event) => {
-		setDnaString(event.target.value);
+		let inputValue = event.target.value;
+		// Check if the input starts with "0x" and remove it
+		if (inputValue.startsWith('0x')) {
+			inputValue = inputValue.substring(2);
+		}
+		setDnaString(inputValue);
 	};
 
 	const renderGeneByKey = (key) => {
