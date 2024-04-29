@@ -17,10 +17,13 @@ import {
 	snakeCaseToTitleCase,
 } from '../util';
 import ColorIndicator from './ColorIndicator';
+import PersonaImage from './PersonaImage';
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
 	const [decodedData, setDecodedData] = useState(null);
+	const [submittedDNA, setSubmittedDNA] = useState('');
+	const [isPersonaImageOpen, setIsPersonaImageOpen] = useState(false);
 
 	const reverseMapping = (mapping) => {
 		const reversed = {};
@@ -122,6 +125,12 @@ function DNADecoder() {
 
 		// Extract the collection gene (hardcoded position)
 		const collectionGene = dnaString.slice(4, 6).toLowerCase();
+
+		// Set the DNA key to avoid re-renders before decoding
+		setSubmittedDNA(dnaString);
+		// probably should be somewhere else and done a different way but for now this works
+		// basically if the collection gene is 01 then it's a persona, and we need to display the persona image
+		collectionGene === '01'? setIsPersonaImageOpen(true) : setIsPersonaImageOpen(false);
 
 		// Determine the correct DNA key
 		const collectionType = protocolVersions['v1'][collectionGene];
@@ -237,6 +246,12 @@ function DNADecoder() {
 			<Button variant='contained' onClick={handleSubmit}>
 				Decode DNA
 			</Button>
+			{/* If the DNA is a persona, display persona image*/}
+			{
+				isPersonaImageOpen ? (
+					<PersonaImage dna={submittedDNA} />
+				) : null
+			}
 			{decodedData && (
 				<Typography
 					variant='h4'
