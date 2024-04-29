@@ -4,7 +4,9 @@ function PersonaImage({ dna }) {
 
 	return (
 		<div>
-			<img src={`CHANGEME!!${dna}`} alt="Persona" />
+			<object data={`PUT IN THA URL!!!!${dna}`} type="image/png">
+				<p>Couldn't find persona photo</p>
+			</object>
 		</div>
 	)
 }
