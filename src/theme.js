@@ -105,7 +105,7 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					backgroundColor: '#ffffff',
-					marginBottom: '6rem',
+					marginBottom: '1rem',
 					'&:hover': {
 						backgroundColor: '#d7d7d7',
 					},
