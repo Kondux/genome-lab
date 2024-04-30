@@ -4,7 +4,7 @@ function PersonaImage({ dna }) {
 
 	return (
 		<div>
-			<object data={`PUT IN THA URL!!!!${dna}`} type="image/png">
+			<object data={`https://${process.env.REACT_APP_PERSONA_URL}${dna}`} type="image/png">
 				<p>Couldn't find persona photo</p>
 			</object>
 		</div>
