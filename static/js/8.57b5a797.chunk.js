@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdna_encoder=self.webpackChunkdna_encoder||[]).push([[8],{5008:e=>{e.exports=JSON.parse('{"v1":{"01":"persona","02":"avatar","fe":"voucher","ff":"photon"}}')}}]);
