@@ -6,16 +6,17 @@
  * @param {string} props.margin - The margin around the indicator (https://developer.mozilla.org/en-US/docs/Web/CSS/margin).
  * @returns {JSX.Element} styled \<div> element.
  */
-function ColorIndicator(props) {
+function ColorIndicator({ color, height, margin }) {
 	return (
 		<div
 			style={{
-				backgroundColor: props.color,
-				border: '2px white solid',
+				backgroundColor: color,
+				border: '2px solid rgba(255, 255, 255, 0.5)',
 				aspectRatio: '1',
-				height: props.height,
+				height,
 				borderRadius: '50%',
-				margin: props.margin,
+				margin,
+				boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
 			}}
 		/>
 	);

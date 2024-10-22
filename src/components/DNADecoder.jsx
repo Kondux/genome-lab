@@ -6,6 +6,9 @@ import {
 	Typography,
 	InputAdornment,
 	IconButton,
+	Box,
+	Paper,
+	Grid,
 } from '@mui/material';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import geneColorPalette from '../data/gene_color_pallet.json';
@@ -18,10 +21,35 @@ import {
 } from '../util';
 import ColorIndicator from './ColorIndicator';
 import PersonaImage from './PersonaImage';
+import { motion } from 'framer-motion';
+import { styled } from '@mui/material/styles';
+
+const GlowingPaper = styled(Paper)(({ theme }) => ({
+	backgroundColor: 'rgba(0, 0, 0, 0.6)',
+	boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)',
+	transition: 'box-shadow 0.3s ease-in-out',
+	'&:hover': {
+		boxShadow: '0 0 20px rgba(0, 255, 255, 0.8)',
+	},
+}));
+
+const FuturisticButton = styled(Button)(({ theme }) => ({
+	background: 'linear-gradient(45deg, #00ffff 30%, #0088ff 90%)',
+	border: 0,
+	borderRadius: 3,
+	boxShadow: '0 3px 5px 2px rgba(0, 255, 255, .3)',
+	color: '#000000',
+	height: 48,
+	padding: '0 30px',
+	transition: 'all 0.3s ease-in-out',
+	'&:hover': {
+		boxShadow: '0 6px 10px 4px rgba(0, 255, 255, .5)',
+	},
+}));
 
 function DNADecoder() {
 	const [dnaString, setDnaString] = useState('');
-	const [decodedData, setDecodedData] = useState(null);
+	const [localDecodedData, setLocalDecodedData] = useState(null);
 	const [submittedDNA, setSubmittedDNA] = useState('');
 	const [isPersonaImageOpen, setIsPersonaImageOpen] = useState(false);
 
@@ -120,26 +148,18 @@ function DNADecoder() {
 	};
 
 	const handleSubmit = () => {
-		// Set the DNA key
 		if (!dnaString) return;
 
-		// Extract the collection gene (hardcoded position)
 		const collectionGene = dnaString.slice(4, 6).toLowerCase();
-
-		// Set the DNA key to avoid re-renders before decoding
 		setSubmittedDNA(dnaString);
-		// probably should be somewhere else and done a different way but for now this works
-		// basically if the collection gene is 01 then it's a persona, and we need to display the persona image
-		collectionGene === '01'? setIsPersonaImageOpen(true) : setIsPersonaImageOpen(false);
+		collectionGene === '01' ? setIsPersonaImageOpen(true) : setIsPersonaImageOpen(false);
 
-		// Determine the correct DNA key
 		const collectionType = protocolVersions['v1'][collectionGene];
 		if (collectionType) {
 			import(`../data/DNA_keys/${collectionType}_DNA_key_v1.json`)
 				.then((key) => {
-					// Proceed with decoding using the loaded DNA key
 					const decodedResults = decodeDNA(key.default);
-					setDecodedData(decodedResults);
+					setLocalDecodedData(decodedResults);
 				})
 				.catch((error) =>
 					console.error('Error loading DNA key file:', error),
@@ -163,11 +183,11 @@ function DNADecoder() {
 				return (
 					<div style={{ display: 'flex', alignItems: 'center' }}>
 						<ColorIndicator
-							color={decodedData[key].hex}
+							color={localDecodedData[key].hex}
 							margin='0 0.5rem 0 0'
 						/>
 						{addSpaceBeforeNumbers(
-							camelCaseToTitleCase(decodedData[key].name),
+							camelCaseToTitleCase(localDecodedData[key].name),
 						) || 'Unknown'}
 					</div>
 				);
@@ -176,17 +196,17 @@ function DNADecoder() {
 					snakeCaseToTitleCase(
 						addSpaceBeforeNumbers(
 							replaceDashesAndUnderscores(
-								decodedData[key].toString(),
+								localDecodedData[key].toString(),
 							),
 						),
 					) || 'Unknown'
 				);
 			case 'int':
-				return isNaN(decodedData[key]) ? 'Unknown' : decodedData[key];
+				return isNaN(localDecodedData[key]) ? 'Unknown' : localDecodedData[key];
 			case 'bool':
-				return decodedData[key] ? 'Yes' : 'No';
+				return localDecodedData[key] ? 'Yes' : 'No';
 			default:
-				return decodedData[key];
+				return localDecodedData[key];
 		}
 	};
 
@@ -222,55 +242,87 @@ function DNADecoder() {
 	
 
 	return (
-		<div>
-			<TextField
-				fullWidth
-				label='DNA String'
-				value={dnaString}
-				onChange={handleDnaStringChange}
-				margin='normal'
-				InputProps={{
-					endAdornment: (
-						<InputAdornment position='end'>
-							<IconButton
-								onClick={handlePaste}
-								edge='end'
-								title='Paste'
-							>
-								<ContentPaste />
-							</IconButton>
-						</InputAdornment>
-					),
-				}}
-			/>
-			<Button variant='contained' onClick={handleSubmit}>
-				Decode DNA
-			</Button>
-			{/* If the DNA is a persona, display persona image*/}
-			{
-				isPersonaImageOpen ? (
-					<PersonaImage dna={submittedDNA} />
-				) : null
-			}
-			{decodedData && (
-				<Typography
-					variant='h4'
-					id='decoded-data'
-					style={{
-						marginTop: '20px',
-						fontSize: '1.75rem',
-						lineHeight: '1.7',
-						color: '#f5f4ff',
+		<Box sx={{ maxWidth: 600, margin: '0 auto' }}>
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+			>
+				<TextField
+					fullWidth
+					label='DNA String'
+					value={dnaString}
+					onChange={handleDnaStringChange}
+					margin='normal'
+					variant='outlined'
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position='end'>
+								<IconButton
+									onClick={handlePaste}
+									edge='end'
+									title='Paste'
+									sx={{ color: '#00ffff' }}
+								>
+									<ContentPaste />
+								</IconButton>
+							</InputAdornment>
+						),
+						sx: {
+							'& .MuiOutlinedInput-notchedOutline': {
+								borderColor: '#00ffff',
+							},
+							'&:hover .MuiOutlinedInput-notchedOutline': {
+								borderColor: '#0088ff',
+							},
+							'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+								borderColor: '#00ffff',
+							},
+							color: '#00ffff',
+						},
 					}}
+					InputLabelProps={{
+						sx: { color: '#00ffff' },
+					}}
+				/>
+				<FuturisticButton onClick={handleSubmit} fullWidth sx={{ mt: 2, mb: 4 }}>
+					Decode DNA
+				</FuturisticButton>
+			</motion.div>
+
+			{isPersonaImageOpen && (
+				<motion.div
+					initial={{ opacity: 0, scale: 0.8 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ duration: 0.5 }}
 				>
-					<div>
-						{Object.keys(decodedData).map((key) =>
-							renderDNAMapping(key),
-						)}
-					</div>
-				</Typography>
+					<Box sx={{ mt: 2, mb: 4 }}>
+						<PersonaImage dna={submittedDNA} />
+					</Box>
+				</motion.div>
 			)}
-		</div>
+
+			{localDecodedData && (
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+				>
+					<GlowingPaper elevation={3} sx={{ p: 3 }}>
+						<Typography variant='h5' gutterBottom sx={{ color: '#00ffff' }}>
+							Decoded Data
+						</Typography>
+						<Grid container spacing={2}>
+							{Object.keys(localDecodedData).map((key) => (
+								<Grid item xs={12} sm={6} key={key}>
+									{renderDNAMapping(key)}
+								</Grid>
+							))}
+						</Grid>
+					</GlowingPaper>
+				</motion.div>
+			)}
+		</Box>
 	);
 }
 

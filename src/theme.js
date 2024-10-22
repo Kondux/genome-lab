@@ -104,10 +104,11 @@ const theme = createTheme({
 		MuiButton: {
 			styleOverrides: {
 				root: {
-					backgroundColor: '#ffffff',
-					marginBottom: '1rem',
+					backgroundColor: konduxColors['accent-blue'],
+					color: '#000000',
+					fontWeight: 'bold',
 					'&:hover': {
-						backgroundColor: '#d7d7d7',
+						backgroundColor: '#1BC3A1',
 					},
 				},
 			},
@@ -126,6 +127,34 @@ const theme = createTheme({
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
+				},
+			},
+		},
+		MuiTextField: {
+			styleOverrides: {
+				root: {
+					'& .MuiOutlinedInput-root': {
+						'& fieldset': {
+							borderColor: 'rgba(255, 255, 255, 0.23)',
+						},
+						'&:hover fieldset': {
+							borderColor: 'rgba(255, 255, 255, 0.5)',
+						},
+						'&.Mui-focused fieldset': {
+							borderColor: konduxColors['accent-blue'],
+						},
+					},
+				},
+			},
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: {
+					fontSize: '1rem',
+					fontWeight: 'bold',
+					'&.Mui-selected': {
+						color: konduxColors['accent-blue'],
+					},
 				},
 			},
 		},
