@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import {
 	FormControl,
 	InputLabel,
@@ -9,6 +9,8 @@ import {
 	Typography,
 	Switch,
 	IconButton,
+	Box,
+	Paper,
 } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 import {
@@ -19,6 +21,8 @@ import {
 	toTitleCase,
 } from '../util';
 import ColorIndicator from './ColorIndicator';
+import { motion } from 'framer-motion';
+import { styled } from '@mui/material/styles';
 
 // Import the color palette
 import geneColorPalette from '../data/gene_color_pallet.json';
@@ -30,7 +34,33 @@ const encodeInt = (value, byteSize) => {
 		.padStart(byteSize * 2, '0');
 };
 
-function DNAEncoder() {
+const GlowingPaper = styled(Paper)(({ theme }) => ({
+	backgroundColor: 'rgba(0, 0, 0, 0.6)',
+	boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)',
+	transition: 'box-shadow 0.3s ease-in-out',
+	'&:hover': {
+		boxShadow: '0 0 20px rgba(0, 255, 255, 0.8)',
+	},
+}));
+
+const FuturisticSlider = styled(Slider)(({ theme }) => ({
+	'& .MuiSlider-thumb': {
+		height: 28,
+		width: 28,
+		backgroundColor: '#00ffff',
+		boxShadow: '0 0 10px rgba(0, 255, 255, 0.8)',
+	},
+	'& .MuiSlider-track': {
+		height: 4,
+		backgroundColor: '#00ffff',
+	},
+	'& .MuiSlider-rail': {
+		height: 4,
+		backgroundColor: 'rgba(0, 255, 255, 0.2)',
+	},
+}));
+
+function DNAEncoder({ onCollectionTypeChange }) {
 	const [protocolVersion] = useState(1); // Fixed protocol version
 	const [stakingBoost, setStakingBoost] = useState(0); // NFT boost determined by slider
 	const [collectionType, setCollectionType] = useState('');
@@ -38,6 +68,9 @@ function DNAEncoder() {
 	const [dnaKey, setDnaKey] = useState(null);
 	const [inputValues, setInputValues] = useState({});
 	const [errorValues, setErrorValues] = useState({});
+	const [fontSize, setFontSize] = useState(16); // Initial font size
+	const textRef = useRef(null);
+	const containerRef = useRef(null);
 
 	useEffect(() => {
 		if (protocolVersion)
@@ -202,7 +235,7 @@ function DNAEncoder() {
 		});
 	};
 
-	const encodeDNA = () => {
+	const encodeDNA = useCallback(() => {
 		if (!dnaKey) return '';
 
 		let dnaString = '';
@@ -241,73 +274,130 @@ function DNAEncoder() {
 			});
 
 		return dnaString.toUpperCase();
-	};
+	}, [dnaKey, protocolVersion, stakingBoost, collectionType, inputValues, collectionTypes]);
+
+	const encodedDNA = useMemo(() => encodeDNA(), [encodeDNA]);
+
+	useEffect(() => {
+		const adjustFontSize = () => {
+			if (textRef.current && containerRef.current) {
+				let currentSize = fontSize;
+				textRef.current.style.fontSize = `${currentSize}px`;
+				
+				while (textRef.current.scrollWidth > containerRef.current.clientWidth && currentSize > 8) {
+					currentSize--;
+					textRef.current.style.fontSize = `${currentSize}px`;
+				}
+				
+				setFontSize(currentSize);
+			}
+		};
+
+		adjustFontSize();
+		window.addEventListener('resize', adjustFontSize);
+		return () => window.removeEventListener('resize', adjustFontSize);
+	}, [encodedDNA, fontSize]);
 
 	const handleCopyToClipboard = () => {
-		navigator.clipboard.writeText(encodeDNA()).then(
-			() => {
-				// Handle successful copy
-				console.log('DNA copied to clipboard');
-			},
-			(error) => {
-				// Handle error
-				console.error('Failed to copy DNA to clipboard: ', error);
-			},
-		);
+		navigator.clipboard.writeText(encodedDNA);
+	};
+
+	const handleCollectionTypeChange = (e) => {
+		const newCollectionType = e.target.value;
+		setCollectionType(newCollectionType);
+		
+		// Map collection types to colors
+		const colorMap = {
+			'photon': '#ff00ff',  // Bright magenta
+			'voucher': '#ffd700',  // Gold
+			'avatar': '#00ff80',  // Bright cyan-green
+			'persona': '#00ffff',  // Cyan
+			// Add more mappings as needed
+		};
+
+		// Call the prop function with the new color
+		onCollectionTypeChange(colorMap[newCollectionType] || '#00ffff');
 	};
 
 	return (
-		<div>
-			<Typography variant='h5'>
-				{encodeDNA()}
-				{collectionType ? (
-					<IconButton
-						onClick={handleCopyToClipboard}
-						aria-label='copy'
-						style={{ height: '100%' }}
-					>
-						<ContentCopy />
-					</IconButton>
-				) : null}
-			</Typography>
+		<Box sx={{ maxWidth: '100%', overflow: 'hidden' }}>
+			{encodedDNA && (
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+				>
+					<GlowingPaper elevation={3} sx={{ p: 2, mb: 2 }}>
+						<Box 
+							ref={containerRef}
+							sx={{ 
+								display: 'flex', 
+								alignItems: 'center', 
+								justifyContent: 'space-between',
+								width: '100%'
+							}}
+						>
+							<Typography 
+								ref={textRef}
+								variant='h6' 
+								sx={{ 
+									color: '#00ffff',
+									whiteSpace: 'nowrap',
+									overflow: 'hidden',
+									textOverflow: 'ellipsis',
+									flexGrow: 1,
+									mr: 2,
+									fontSize: `${fontSize}px`,
+								}}
+							>
+								{encodedDNA}
+							</Typography>
+							{collectionType && (
+								<IconButton
+									onClick={handleCopyToClipboard}
+									aria-label='copy'
+									sx={{ color: '#00ffff', flexShrink: 0 }}
+								>
+									<ContentCopy />
+								</IconButton>
+							)}
+						</Box>
+					</GlowingPaper>
+				</motion.div>
+			)}
+
 			<FormControl fullWidth margin='normal'>
-				<InputLabel id='collection-type-label'>
-					Collection Type
-				</InputLabel>
+				<InputLabel id='collection-type-label'>Collection Type</InputLabel>
 				<Select
 					labelId='collection-type-label'
 					value={collectionType}
 					label='Collection Type'
-					onChange={(e) => setCollectionType(e.target.value)}
+					onChange={handleCollectionTypeChange}
 				>
-					{Object.values(collectionTypes)
-						.reverse()
-						.map((type) => {
-							return (
-								<MenuItem key={type} value={type}>
-									{toTitleCase(type)}
-								</MenuItem>
-							);
-						})}
+					{Object.entries(collectionTypes).map(([key, value]) => (
+						<MenuItem key={key} value={value}>
+							{snakeCaseToTitleCase(value)}
+						</MenuItem>
+					))}
 				</Select>
 			</FormControl>
 
-			{collectionType ? (
-				<>
-					<Typography gutterBottom>
-						Staking Boost: {stakingBoost}%
-					</Typography>
-					<Slider
+			{collectionType && (
+				<Box sx={{ mt: 2, mb: 2, px: 3.5 }}>
+					<Typography gutterBottom sx={{ color: '#00ffff' }}>Staking Boost: {stakingBoost}%</Typography>
+					<FuturisticSlider
 						value={stakingBoost}
 						onChange={(e, val) => setStakingBoost(val)}
 						min={0}
 						max={100}
 					/>
-				</>
-			) : null}
+				</Box>
+			)}
 
-			{renderInputFields()}
-		</div>
+			<Box sx={{ mt: 2 }}>
+				{renderInputFields()}
+			</Box>
+		</Box>
 	);
 }
 
