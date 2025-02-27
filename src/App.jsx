@@ -2,7 +2,6 @@
 import React, { useState, useCallback, Suspense, lazy } from 'react';
 import { AppBar, Tabs, Tab, Box, ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import ParticleBackground from './components/ParticleBackground';
 
 // Use lazy loading for DNAEncoder and DNADecoder
 const LazyDNAEncoder = lazy(() => import('./components/DNAEncoder'));
@@ -63,22 +62,11 @@ const darkTheme = createTheme({
   },
 });
 
-const tabVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -50 },
-};
-
 function App() {
 	const [tabValue, setTabValue] = useState(0);
-	const [particleColor, setParticleColor] = useState('#00ffff'); // Default cyan color
 
 	const handleTabChange = useCallback((event, newValue) => {
 		setTabValue(newValue);
-	}, []);
-
-	const handleCollectionTypeChange = useCallback((newColor) => {
-		setParticleColor(newColor);
 	}, []);
 
 	return (
@@ -91,9 +79,7 @@ function App() {
 				flexDirection: 'column', 
 				position: 'relative', 
 				overflow: 'hidden',
-				background: 'linear-gradient(to bottom, #000000, #001a33)', // Dark gradient background
 			}}>
-				<ParticleBackground color={particleColor} />
 				<AppBar position='static' sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
 					<Tabs
 						value={tabValue}
@@ -147,7 +133,7 @@ function App() {
 								<Suspense fallback={<div>Loading...</div>}>
 									{tabValue === 0 && <LazyDNADecoder />}
 									{tabValue === 1 && (
-										<LazyDNAEncoder onCollectionTypeChange={handleCollectionTypeChange} />
+										<LazyDNAEncoder />
 									)}
 								</Suspense>
 							</motion.div>
