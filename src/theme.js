@@ -59,10 +59,10 @@ const theme = createTheme({
 					textAlign: 'center',
 				},
 				body: {
-					height: '100%',
-					backgroundImage: `linear-gradient(${konduxColors['gradient-pink']}, ${konduxColors['gradient-violet']})`,
+					backgroundImage: `url(${process.env.PUBLIC_URL}/Kondux-Desktop-Background.webp)`,
+					backgroundSize: 'cover',
 					backgroundRepeat: 'no-repeat',
-					backgroundAttachment: 'fixed',
+					backgroundPosition: 'center',
 				},
 
 				[`@media (max-width:${breakpoints.values.mobile}px)`]: {

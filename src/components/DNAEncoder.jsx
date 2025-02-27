@@ -18,7 +18,6 @@ import {
 	replaceDashesAndUnderscores,
 	camelCaseToTitleCase,
 	addSpaceBeforeNumbers,
-	toTitleCase,
 } from '../util';
 import ColorIndicator from './ColorIndicator';
 import { motion } from 'framer-motion';
@@ -60,7 +59,7 @@ const FuturisticSlider = styled(Slider)(({ theme }) => ({
 	},
 }));
 
-function DNAEncoder({ onCollectionTypeChange }) {
+function DNAEncoder() {
 	const [protocolVersion] = useState(1); // Fixed protocol version
 	const [stakingBoost, setStakingBoost] = useState(0); // NFT boost determined by slider
 	const [collectionType, setCollectionType] = useState('');
@@ -305,18 +304,6 @@ function DNAEncoder({ onCollectionTypeChange }) {
 	const handleCollectionTypeChange = (e) => {
 		const newCollectionType = e.target.value;
 		setCollectionType(newCollectionType);
-		
-		// Map collection types to colors
-		const colorMap = {
-			'photon': '#ff00ff',  // Bright magenta
-			'voucher': '#ffd700',  // Gold
-			'avatar': '#00ff80',  // Bright cyan-green
-			'persona': '#00ffff',  // Cyan
-			// Add more mappings as needed
-		};
-
-		// Call the prop function with the new color
-		onCollectionTypeChange(colorMap[newCollectionType] || '#00ffff');
 	};
 
 	return (
